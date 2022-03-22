@@ -14,3 +14,16 @@ function set_like() {
         };
      }
 }
+
+function openEditForm() {
+    let editForm = document.getElementById("popup-edit");
+    editForm.classList.add("popup_opened");
+
+    document.getElementById("name").value = document.querySelector(".profile__name").innerText;
+    document.getElementById("description").value = document.querySelector(".profile__description").innerText;
+}
+
+function closeEditForm() {
+    let editForm = document.getElementById("popup-edit");
+    editForm.classList.remove("popup_opened");
+ }

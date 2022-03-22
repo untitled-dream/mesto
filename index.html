@@ -23,7 +23,7 @@
         <div class="profile__info">
           <div class="profile__container">
             <h1 class="profile__name">Смирнов Андрей</h1>
-            <button class="profile__button profile__button-edit" type="button"></button>
+            <button class="profile__button profile__button-edit" onclick="openEditForm()" type="button"></button>
           </div>
           <p class="profile__description">Не исследователь океана</p>
         </div>
@@ -70,11 +70,24 @@
               <img class="elements__image" src="./images/photo-grid-athens.jpg" alt="Афины">
               <div class="elements__title-wrapper">
                 <h2 class="elements__title">Афины</h2>
-                <button class="elements__button-like" type="button" onclick="set_like(id)"></button>
+                <button class="elements__button-like" type="button" onclick="set_like()"></button>
               </div>
             </li>
           </ul>
       </section>
+      <div class="popup" id="popup-edit">
+        <div class="popup__container">
+          <button class="popup__button-close" type="button" onclick="closeEditForm()"></button>
+          <form>
+            <fieldset class="popup__fieldset">
+              <h2 class="popup__title">Редактировать профиль</h2>
+              <input class="popup__text" id="name" name="name" placeholder="Имя">
+              <input class="popup__text" id="description" name="description" placeholder="Описание">
+              <button class="popup__button-submit">Сохранить</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyrights">&copy;&nbsp;2020 Mesto Russia</p>
