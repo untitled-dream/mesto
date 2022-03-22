@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./styles/styles.css">
   <title>Mesto - Russia</title>
   <link rel="shortcut icon" href="">
-  <script src="./scripts/scripts.js"></script>
+  
 </head>
 <body class="root">
  
@@ -23,7 +23,7 @@
         <div class="profile__info">
           <div class="profile__container">
             <h1 class="profile__name">Смирнов Андрей</h1>
-            <button class="profile__button profile__button-edit" onclick="openEditForm()" type="button"></button>
+            <button class="profile__button profile__button-edit" type="button"></button>
           </div>
           <p class="profile__description">Не исследователь океана</p>
         </div>
@@ -77,13 +77,13 @@
       </section>
       <div class="popup" id="popup-edit">
         <div class="popup__container">
-          <button class="popup__button-close" type="button" onclick="closeEditForm()"></button>
+          <button class="popup__button-close" type="button"></button>
           <form>
             <fieldset class="popup__fieldset">
               <h2 class="popup__title">Редактировать профиль</h2>
               <input class="popup__text" id="name" name="name" placeholder="Имя">
               <input class="popup__text" id="description" name="description" placeholder="Описание">
-              <button class="popup__button-submit">Сохранить</button>
+              <button class="popup__button-submit" type="submit">Сохранить</button>
             </fieldset>
           </form>
         </div>
@@ -92,5 +92,6 @@
     <footer class="footer">
       <p class="footer__copyrights">&copy;&nbsp;2020 Mesto Russia</p>
     </footer>
-</body>  
+</body> 
+<script src="./scripts/scripts.js"></script>
 </html>

@@ -8,12 +8,12 @@
     left: 0;
     right: 0;
     top: 0;
-    transition: 5s opacity  ease-out;
+    transition: .5s opacity;
     z-index: 2;
 }
 
 .popup_opened {
-    animation: formfade 1s;
+    animation: formfade .5s;
     display: flex;
     opacity: 1;
 }
