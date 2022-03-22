@@ -1,0 +1,15 @@
+.elements__card {
+    background-color: #fff;
+    border-radius: 10px;
+    display: grid;
+    width: 282px;
+    overflow: hidden;
+    position: relative;
+}
+
+@media screen and (max-width: 1000px) {
+    .elements__card {
+        justify-self: center;
+    }
+    
+}
