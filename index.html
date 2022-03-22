@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=320, width=device-width, initial-scale=1.0">
+  <meta name="author" content="Смирнов Андрей">
+  <meta name="description" content="Яндекс.Практикум. Проектная работа 3 - Mesto">
+  <meta name="keywords" content="Яндекс.Практикум, HTML, CSS, Java Script">
+  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <title>Mesto - Russia</title>
+  <link rel="shortcut icon" href="">
+  <script src="./scripts/scripts.js"></script>
+</head>
+<body class="root">
+ 
+    <header class="header">
+        <img class="header__logo" src="./images/header-logo.svg" alt="Mesto - Russia Logo">    
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/avatar.png">
+        <div class="profile__info">
+          <div class="profile__container">
+            <h1 class="profile__name">Смирнов Андрей</h1>
+            <button class="profile__button profile__button-edit" type="button"></button>
+          </div>
+          <p class="profile__description">Не исследователь океана</p>
+        </div>
+        <button class="profile__button profile__button-add" type="button"></button>
+      </section>
+      <section class="elements__container">
+          <ul class="elements">
+            <li class="elements__card">
+              <img class="elements__image" src="./images/photo-grid-kazan.jpg" alt="Казань">
+              <div class="elements__title-wrapper">
+                <h2 class="elements__title">Казанский кремль</h2>
+                <button class="elements__button-like" type="button" onclick="set_like()"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__image" src="./images/photo-grid-moscow-2.jpg" alt="Москва">
+              <div class="elements__title-wrapper">
+                <h2 class="elements__title">МГУ, Москва</h2>
+                <button class="elements__button-like" type="button" onclick="set_like()"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__image" src="./images/photo-grid-aegina.jpg" alt="Эгина">
+              <div class="elements__title-wrapper">
+                <h2 class="elements__title">о. Эгина, Греция</h2>
+                <button class="elements__button-like" type="button" onclick="set_like()"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__image" src="./images/photo-grid-kurshskaya-kosa.jpg" alt="Эгина">
+              <div class="elements__title-wrapper">
+                <h2 class="elements__title">Куршская Коса</h2>
+                <button class="elements__button-like" type="button" onclick="set_like()"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__image" src="./images/photo-grid-moscow-1.jpg" alt="Москва">
+              <div class="elements__title-wrapper">
+                <h2 class="elements__title">Москва</h2>
+                <button class="elements__button-like" type="button" onclick="set_like()"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__image" src="./images/photo-grid-athens.jpg" alt="Афины">
+              <div class="elements__title-wrapper">
+                <h2 class="elements__title">Афины</h2>
+                <button class="elements__button-like" type="button" onclick="set_like(id)"></button>
+              </div>
+            </li>
+          </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyrights">&copy;&nbsp;2020 Mesto Russia</p>
+    </footer>
+</body>  
+</html>
