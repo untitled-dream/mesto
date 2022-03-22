@@ -1,13 +1,15 @@
 let editForm = document.getElementById("popup-edit");
 
-let nameCurrent = document.querySelector(".profile__name").innerText;
-let descriptionCurrent = document.querySelector(".profile__description").innerText;
 
 /* form opening */
 let openFormButton = document.querySelector(".profile__button-edit");
 function formOpenHandler(evt) {
     evt.preventDefault();
     editForm.classList.add("popup_opened");
+    
+    let nameCurrent = document.querySelector(".profile__name").innerText;
+    let descriptionCurrent = document.querySelector(".profile__description").innerText;
+
     document.getElementById("name").value = nameCurrent;
     document.getElementById("description").value = descriptionCurrent;
 }
