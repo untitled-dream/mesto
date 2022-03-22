@@ -1,6 +1,5 @@
 let editForm = document.getElementById("popup-edit");
 
-
 /* form opening */
 let openFormButton = document.querySelector(".profile__button-edit");
 function formOpenHandler(evt) {
