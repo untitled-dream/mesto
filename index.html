@@ -8,24 +8,22 @@
   <meta name="keywords" content="Яндекс.Практикум, HTML, CSS, Java Script">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto - Russia</title>
-  <link rel="shortcut icon" href="">
 </head>
 <body class="root">
- 
     <header class="header">
         <img class="header__logo" src="./images/header-logo.svg" alt="Mesto - Russia Logo">    
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.png">
+        <img class="profile__avatar" src="./images/avatar.png" alt="Фотография пользователя">
         <div class="profile__info">
           <div class="profile__container">
             <h1 class="profile__name">Смирнов Андрей</h1>
-            <button class="profile__button profile__button-edit" type="button"></button>
+            <button class="profile__button profile__button-edit" type="button" title="Редактировать профиль"></button>
           </div>
           <p class="profile__description">Не исследователь океана</p>
         </div>
-        <button class="profile__button profile__button-add" type="button"></button>
+        <button class="profile__button profile__button-add" type="button" title="Добавить фотографию"></button>
       </section>
       <section class="elements__container">
           <ul class="elements" id="elements">
@@ -33,55 +31,55 @@
               <img class="elements__image" src="./images/photo-grid-kazan.jpg" alt="Казань">
               <div class="elements__title-wrapper">
                 <h2 class="elements__title">Казанский кремль</h2>
-                <button class="elements__button-like" type="button"></button>
+                <button class="elements__button-like" type="button" title="Лайк"></button>
               </div>
             </li>
             <li class="elements__card">
               <img class="elements__image" src="./images/photo-grid-moscow-2.jpg" alt="Москва">
               <div class="elements__title-wrapper">
                 <h2 class="elements__title">МГУ, Москва</h2>
-                <button class="elements__button-like" type="button"></button>
+                <button class="elements__button-like" type="button" title="Лайк"></button>
               </div>
             </li>
             <li class="elements__card">
-              <img class="elements__image" src="./images/photo-grid-aegina.jpg" alt="Эгина">
+              <img class="elements__image" src="./images/photo-grid-aegina.jpg" alt="о. Эгина, Греция">
               <div class="elements__title-wrapper">
                 <h2 class="elements__title">о. Эгина, Греция</h2>
-                <button class="elements__button-like" type="button"></button>
+                <button class="elements__button-like" type="button" title="Лайк"></button>
               </div>
             </li>
             <li class="elements__card">
-              <img class="elements__image" src="./images/photo-grid-kurshskaya-kosa.jpg" alt="Эгина">
+              <img class="elements__image" src="./images/photo-grid-kurshskaya-kosa.jpg" alt="Куршская Коса">
               <div class="elements__title-wrapper">
                 <h2 class="elements__title">Куршская Коса</h2>
-                <button class="elements__button-like" type="button"></button>
+                <button class="elements__button-like" type="button" title="Лайк"></button>
               </div>
             </li>
             <li class="elements__card">
               <img class="elements__image" src="./images/photo-grid-moscow-1.jpg" alt="Москва">
               <div class="elements__title-wrapper">
                 <h2 class="elements__title">Москва</h2>
-                <button class="elements__button-like" type="button"></button>
+                <button class="elements__button-like" type="button" title="Лайк"></button>
               </div>
             </li>
             <li class="elements__card">
               <img class="elements__image" src="./images/photo-grid-athens.jpg" alt="Афины">
               <div class="elements__title-wrapper">
                 <h2 class="elements__title">Афины</h2>
-                <button class="elements__button-like" type="button"></button>
+                <button class="elements__button-like" type="button" title="Лайк"></button>
               </div>
             </li>
           </ul>
       </section>
       <div class="popup" id="popup-edit">
         <div class="popup__container">
-          <button class="popup__button-close" type="button"></button>
+          <button class="popup__button-close" type="button" title="Закрыть форму"></button>
           <form>
             <fieldset class="popup__fieldset">
               <h2 class="popup__title">Редактировать профиль</h2>
               <input class="popup__text" id="name" name="name" placeholder="Имя" autocomplete="off">
               <input class="popup__text" id="description" name="description" placeholder="Описание" autocomplete="off">
-              <button class="popup__button-submit" type="submit">Сохранить</button>
+              <button class="popup__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
             </fieldset>
           </form>
         </div>
@@ -90,6 +88,6 @@
     <footer class="footer">
       <p class="footer__copyrights">&copy;&nbsp;2020 Mesto Russia</p>
     </footer>
-</body> 
-<script src="./index.js"></script>
+    <script src="./index.js"></script>
+</body>
 </html>

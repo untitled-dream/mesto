@@ -36,9 +36,9 @@ function formSubmitHandler(evt) {
 formElement.addEventListener("click", formSubmitHandler);
 
 /* set like */
-var nodes = document.getElementsByClassName("elements__button-like");
-for (var i = 0; i < nodes.length; i++) {
-    nodes[i].addEventListener('click', function(index) {
+let likeButton = document.getElementsByClassName("elements__button-like");
+for (var i = 0; i < likeButton.length; i++) {
+    likeButton[i].addEventListener('click', function(index) {
         let likeButtonIndex = index + 1;
         let button_like = document.querySelector("li:nth-child(" + likeButtonIndex + ") .elements__button-like");
         button_like.classList.toggle("elements__button-like_active");
