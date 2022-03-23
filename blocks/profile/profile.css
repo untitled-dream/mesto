@@ -1,6 +1,6 @@
 .profile {
     align-items: center;
-    color: var(--profile-color);
+    color: #fff;
     display: flex;
     justify-content: space-between;
 }

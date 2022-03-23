@@ -1,0 +1,15 @@
+.popup_opened {
+    animation: formfade .5s;
+    display: flex;
+    opacity: 1;
+}
+
+@keyframes formfade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -2,14 +2,18 @@
     background-image: url(../../../images/icon-edit.svg);
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid var(--profile-color);
+    border: 1px solid #fff;
     height: 24px;
     width: 24px;
 }
 
 @media screen and (max-width: 620px) {
     .profile__button-edit {
+        background-size: 7.5px 7.5px;
         height: 18px;
         width: 18px;
+        position: absolute;
+        bottom: 6px;
+        right: -28px;
     }
 }

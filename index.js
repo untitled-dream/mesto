@@ -35,19 +35,12 @@ function formSubmitHandler(evt) {
 }
 formElement.addEventListener("click", formSubmitHandler);
 
-function set_like() {
-    let card_buttons_like = document.querySelectorAll(".elements .elements__card");
-    let tab = [];
-    let index;
-
-     for (let i = 0; i < card_buttons_like.length; i++) {
-         
-        tab.push(card_buttons_like[i].innerHTML);
-        
-        card_buttons_like[i].onclick = function() {
-             index = tab.indexOf(this.innerHTML) + 1;
-             let button_like = document.querySelector("li:nth-child(" + index + ") .elements__button-like");
-             button_like.classList.toggle("elements__button-like_active");
-        };
-     }
-}
+/* set like */
+var nodes = document.getElementsByClassName("elements__button-like");
+for (var i = 0; i < nodes.length; i++) {
+    nodes[i].addEventListener('click', function(index) {
+        let likeButtonIndex = index + 1;
+        let button_like = document.querySelector("li:nth-child(" + likeButtonIndex + ") .elements__button-like");
+        button_like.classList.toggle("elements__button-like_active");
+    }.bind(this, i));
+ }
