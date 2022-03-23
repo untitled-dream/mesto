@@ -1,7 +1,7 @@
 .profile__button {
     background-color: transparent;
-    padding: 0;
     cursor: pointer;
+    padding: 0;
     transition: .25s opacity;
 }
 
