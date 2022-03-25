@@ -9,10 +9,10 @@
     width: 22px;
     padding: 0;
     background-size: contain;
-    transition: .5s;
+    transition: .5s opacity;
 }
 
 .elements__button-like:hover {
     opacity: .5;
-    transition: .5s;
+    transition: .5s opacity;
 }
