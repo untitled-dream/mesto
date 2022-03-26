@@ -1,13 +1,21 @@
 .profile__button-add {
     align-self: center;
+    background-color: transparent;
     background-image: url(../../../images/icon-add.svg);
     background-size: 22px 22px;
     background-repeat: no-repeat;
     background-position: center;
     border: 2px solid #fff;
+    cursor: pointer;
     height: 50px;
+    padding: 0;
+    transition: .25s opacity;
     width: 150px;
-    position: relative;
+}
+
+.profile__button-add:hover {
+    opacity: .6;
+    transition: .25s opacity;
 }
 
 @media screen and (max-width: 1000px) {

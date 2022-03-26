@@ -19,11 +19,11 @@
         <div class="profile__info">
           <div class="profile__container">
             <h1 class="profile__name">Смирнов Андрей</h1>
-            <button class="profile__button profile__button-edit" type="button" title="Редактировать профиль"></button>
+            <button class="profile__button-edit" type="button" title="Редактировать профиль"></button>
           </div>
           <p class="profile__description">Не исследователь океана</p>
         </div>
-        <button class="profile__button profile__button-add" type="button" title="Добавить фотографию"></button>
+        <button class="profile__button-add" type="button" title="Добавить фотографию"></button>
       </section>
       <section class="elements">
           <ul class="elements__list">
@@ -71,23 +71,23 @@
             </li>
           </ul>
       </section>
-      <div class="popup" id="popup-edit">
-        <div class="popup__container">
-          <button class="popup__button-close" type="button" title="Закрыть форму"></button>
-          <form>
-            <fieldset class="popup__fieldset">
-              <h2 class="popup__title">Редактировать профиль</h2>
-              <input class="popup__text" id="name" name="name" placeholder="Имя" autocomplete="off">
-              <input class="popup__text" id="description" name="description" placeholder="Описание" autocomplete="off">
-              <button class="popup__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyrights">&copy;&nbsp;2020 Mesto Russia</p>
     </footer>
-    <script src="./index.js"></script>
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button" title="Закрыть форму"></button>
+        <form>
+          <fieldset class="popup__fieldset">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input class="popup__text" id="profile-name" name="profile-name" placeholder="Имя" autocomplete="off">
+            <input class="popup__text" id="profile-description" name="profile-description" placeholder="Описание" autocomplete="off">
+            <button class="popup__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
