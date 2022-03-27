@@ -1,4 +1,5 @@
-let profileForm = document.querySelector(".popup");
+let profilePopup = document.querySelector(".popup");
+let profileForm = document.forms["profile-edit-form"];
 let openProfileFormButton = document.querySelector(".profile__button-edit");
 let closeProfileFormButton = document.querySelector(".popup__button-close");
 
@@ -11,7 +12,7 @@ let descriptionCurrent = document.querySelector(".profile__description");
 /* form opening */
 function formOpenHandler(evt) {
     evt.preventDefault();
-    profileForm.classList.add("popup_opened");
+    profilePopup.classList.add("popup_opened");
     
     nameInput.value = nameCurrent.textContent;
     descriptionInput.value = descriptionCurrent.textContent;
@@ -30,7 +31,7 @@ function formSubmitHandler(evt) {
 /* form closing */
 function formCloseHandler(evt) {
     evt.preventDefault();
-    profileForm.classList.remove("popup_opened");
+    profilePopup.classList.remove("popup_opened");
 }
 
 openProfileFormButton.addEventListener("click", formOpenHandler);
