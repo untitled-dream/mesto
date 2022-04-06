@@ -26,56 +26,13 @@
         <button class="profile__button-add" type="button" title="Добавить фотографию"></button>
       </section>
       <section class="elements">
-          <ul class="elements__list">
-            <li class="elements__card">
-              <img class="elements__image" src="./images/photo-grid-kazan.jpg" alt="Казань">
-              <div class="elements__title-wrapper">
-                <h2 class="elements__title">Казанский кремль</h2>
-                <button class="elements__button-like" type="button" title="Лайк"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__image" src="./images/photo-grid-moscow-2.jpg" alt="Москва">
-              <div class="elements__title-wrapper">
-                <h2 class="elements__title">МГУ, Москва</h2>
-                <button class="elements__button-like" type="button" title="Лайк"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__image" src="./images/photo-grid-aegina.jpg" alt="о. Эгина, Греция">
-              <div class="elements__title-wrapper">
-                <h2 class="elements__title">о. Эгина, Греция</h2>
-                <button class="elements__button-like" type="button" title="Лайк"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__image" src="./images/photo-grid-kurshskaya-kosa.jpg" alt="Куршская Коса">
-              <div class="elements__title-wrapper">
-                <h2 class="elements__title">Куршская Коса</h2>
-                <button class="elements__button-like" type="button" title="Лайк"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__image" src="./images/photo-grid-moscow-1.jpg" alt="Москва">
-              <div class="elements__title-wrapper">
-                <h2 class="elements__title">Москва</h2>
-                <button class="elements__button-like" type="button" title="Лайк"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__image" src="./images/photo-grid-athens.jpg" alt="Афины">
-              <div class="elements__title-wrapper">
-                <h2 class="elements__title">Афины</h2>
-                <button class="elements__button-like" type="button" title="Лайк"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="elements__list"></ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyrights">&copy;&nbsp;2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup" id="profile-edit">
       <div class="popup__container">
         <button class="popup__button-close" type="button" title="Закрыть форму"></button>
         <form id="profile-edit-form" name="profile-edit-form">
@@ -88,6 +45,29 @@
         </form>
       </div>
     </div>
+    <div class="popup" id="element-add">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button" title="Закрыть форму"></button>
+        <form id="element-add-form" name="profile-edit-form">
+          <fieldset class="popup__fieldset">
+            <h2 class="popup__title">Новое место</h2>
+            <input class="popup__text" id="profile-name" name="profile-name" placeholder="Имя" autocomplete="off">
+            <input class="popup__text" id="profile-description" name="profile-description" placeholder="Описание" autocomplete="off">
+            <button class="popup__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <template id="card-template">
+      <li class="elements__card">
+        <img class="elements__image">
+        <div class="elements__title-wrapper">
+          <h2 class="elements__title"></h2>
+          <button class="elements__button-like" type="button" title="Лайк"></button>
+        </div>
+        <button class="elements__button-trash" type="button" title="Удалить запись"></button>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
