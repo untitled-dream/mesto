@@ -15,8 +15,9 @@ const descriptionInput = document.getElementById("profile-description");
 
 let cardNameInput = document.getElementById("card-name");
 let cardSourceInput = document.getElementById("card-source");
+
 let cardImage = document.getElementById("card-image");
-let cardTitle = document.getElementById("test");
+let cardCaption = document.getElementById("card-caption");
 
 const nameCurrent = document.querySelector(".profile__name");
 const descriptionCurrent = document.querySelector(".profile__description");
@@ -50,7 +51,6 @@ const defaultCards = [
     }
   ];
 
-  
   defaultCards.forEach(function (card) {
     const cardElement = cardsTemplate.cloneNode(true);
     
@@ -65,24 +65,29 @@ const defaultCards = [
     cardsList.appendChild(cardElement);  
   })
 
-
 function formOpenHandler(evt) {
     evt.preventDefault();
-    console.log(evt.target.alt)
-    if (evt.target.classList.value === 'profile__button-edit') {
-        profilePopup.classList.add("popup_opened");
     
-        nameInput.value = nameCurrent.textContent;
-        descriptionInput.value = descriptionCurrent.textContent;
-    } else if (evt.target.classList.value === 'profile__button-add') {
-        addCardPopup.classList.add("popup_opened");
-        cardNameInput.value = '';
-        cardSourceInput.value = '';
-    } else if (evt.target.classList.value === 'elements__image') {
-        viewImagePopup.classList.add("popup_opened");
-        cardTitle.textContent = evt.target.alt;
-        cardImage.src = evt.target.src;
-        cardImage.alt = evt.target.alt;
+    switch (evt.target.classList.value) {
+        case "profile__button-edit":
+            profilePopup.classList.add("popup_opened");
+    
+            nameInput.value = nameCurrent.textContent;
+            descriptionInput.value = descriptionCurrent.textContent;
+            break;
+        case "profile__button-add":
+            addCardPopup.classList.add("popup_opened");
+            cardNameInput.value = '';
+            cardSourceInput.value = '';
+            break;
+        case "elements__image":
+            viewImagePopup.classList.add("popup_opened");
+            viewImagePopup.style.background = "rgba(0,0,0,.9)";
+        
+            cardCaption.textContent = evt.target.alt;
+            cardImage.src = evt.target.src;
+            cardImage.alt = evt.target.alt;
+            break;
     }
 }
 
@@ -126,7 +131,6 @@ function closeForm(evt) {
 document.querySelectorAll(".popup__button-close").forEach(closeButton =>
     closeButton.addEventListener("click", () => closeButton.closest(".popup").classList.remove("popup_opened"))
 )
-
 
 openProfileForm.addEventListener("click", formOpenHandler);
 openAddingCardForm.addEventListener("click", formOpenHandler);
