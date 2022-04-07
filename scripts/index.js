@@ -60,12 +60,12 @@ const defaultCards = [
 
     cardElement.querySelector(".elements__button-like").addEventListener('click', setLikeHandler);
     cardElement.querySelector(".elements__button-trash").addEventListener("click", deleteCardHandler);
-    cardElement.querySelector(".elements__image").addEventListener("click", formOpenHandler);
+    cardElement.querySelector(".elements__image").addEventListener("click", popupOpenHandler);
     
     cardsList.appendChild(cardElement);  
   })
 
-function formOpenHandler(evt) {
+function popupOpenHandler(evt) {
     evt.preventDefault();
     
     switch (evt.target.classList.value) {
@@ -110,7 +110,7 @@ function addCardformSubmit(evt) {
 
     newCardElement.querySelector(".elements__button-like").addEventListener('click', setLikeHandler);
     newCardElement.querySelector(".elements__button-trash").addEventListener("click", deleteCardHandler);
-    newCardElement.querySelector(".elements__image").addEventListener("click", formOpenHandler);    
+    newCardElement.querySelector(".elements__image").addEventListener("click", popupOpenHandler);    
     
     cardsList.prepend(newCardElement);
     closeForm(evt);
@@ -132,8 +132,8 @@ document.querySelectorAll(".popup__button-close").forEach(closeButton =>
     closeButton.addEventListener("click", () => closeButton.closest(".popup").classList.remove("popup_opened"))
 )
 
-openProfileForm.addEventListener("click", formOpenHandler);
-openAddingCardForm.addEventListener("click", formOpenHandler);
+openProfileForm.addEventListener("click", popupOpenHandler);
+openAddingCardForm.addEventListener("click", popupOpenHandler);
 
 profileForm.addEventListener("submit", profileFormSubmit);
 addCardForm.addEventListener("submit", addCardformSubmit);
