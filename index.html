@@ -34,7 +34,6 @@
     </footer>
     <div class="popup" id="profile-edit">
       <div class="popup__container">
-        <button class="popup__button-close" type="button" title="Закрыть форму"></button>
         <form id="profile-edit-form" name="profile-edit-form">
           <fieldset class="popup__fieldset">
             <h2 class="popup__title">Редактировать профиль</h2>
@@ -43,20 +42,28 @@
             <button class="popup__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
           </fieldset>
         </form>
+        <button class="popup__button-close" type="button" title="Закрыть форму"></button>
       </div>
     </div>
     <div class="popup" id="card-add">
       <div class="popup__container">
-        <button class="popup__button-close" type="button" title="Закрыть форму"></button>
         <form id="card-add-form" name="card-add-form">
           <fieldset class="popup__fieldset">
             <h2 class="popup__title">Новое место</h2>
-            <input class="popup__text" id="card-name" name="card-name" placeholder="Место" autocomplete="off">
-            <input class="popup__text" id="card-source" name="card-source" type="url" placeholder="Ссылка" autocomplete="off">
-            <button class="popup__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
+            <input class="popup__text" id="card-name" name="card-name" placeholder="Название" autocomplete="off">
+            <input class="popup__text" id="card-source" name="card-source" type="url" placeholder="Ссылка на картинку" autocomplete="off">
+            <button class="popup__button-submit" type="submit" title="Сохранить изменения">Создать</button>
           </fieldset>
         </form>
+        <button class="popup__button-close" type="button" title="Закрыть форму"></button>
       </div>
+    </div>
+    <div class="popup" id="card-view">
+      <figure class="popup__figure">
+        <img class="popup__image" id="card-image" src="" alt="Название">
+        <button class="popup__button-close" type="button" title="Закрыть форму"></button>
+        <figcaption class="popup__caption" id="test">123</figcaption>
+      </figure>
     </div>
     <template id="card-template">
       <li class="elements__card">

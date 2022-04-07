@@ -1,0 +1,6 @@
+.popup__figure {
+    align-self: center;
+    line-height: 0;
+    position: relative;
+    margin: 0 auto;
+}

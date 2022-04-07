@@ -1,4 +1,5 @@
 .elements__image {
+    cursor: pointer;
     height: 282px;
     -o-object-fit: cover;
     object-fit: cover;
