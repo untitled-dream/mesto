@@ -32,7 +32,7 @@ function renderCard(cardElement) {
 }
 
 defaultCards.forEach(function (card) {
-    newCard = getCard(card.name, card.source)
+    newCard = getCard(card.name, card.source);
     renderCard(newCard);
 })
 
@@ -68,8 +68,7 @@ function openProfilePopup() {
 }
 
 function openNewCardPopup() {
-    cardNameInput.value = '';
-    cardSourceInput.value = '';
+    cardAddForm.reset();
     openPopup(cardAddPopup);
 }
 
