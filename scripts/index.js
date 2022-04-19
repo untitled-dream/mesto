@@ -82,11 +82,35 @@ function openImagePopup(popup, name, source) {
 
 function openPopup(popup) {
     popup.classList.add("popup_opened");
+    popup.addEventListener("click", backdropClose);
+    document.addEventListener("keydown", handleModalEscapePress);
 }
 
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
-} 
+}
+
+function backdropClose(evt) {
+    if (evt.target.classList.contains("popup_opened")) {
+        handleCloseModal(evt.target)
+    }
+}
+
+function handleModalEscapePress(evt) {
+    if (evt.key === "Escape") {
+        handleCloseModal()
+    }
+}
+
+function handleCloseModal(popup) {
+    document.querySelector(".popup_opened").classList.remove("popup_opened");
+
+    if (popup) {
+        popup.removeEventListener("click", backdropClose);
+    } else {
+        document.removeEventListener('keydown', handleModalEscapePress);
+    }
+  }
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -107,6 +131,18 @@ function handleCardDeleteClick(evt) {
 document.querySelectorAll(".popup__button-close").forEach(closeButton =>
     closeButton.addEventListener("click", () => closePopup(closeButton.closest(".popup")))
 )
+
+/*document.querySelectorAll(".popup").forEach(backdropClick => 
+    backdropClick.addEventListener("click", function(evt) {
+        if (evt.target.classList.contains("popup_opened")) {
+            handleCloseModal()
+        }  
+    })
+);
+
+document.querySelectorAll(".popup").forEach(backdropClick => 
+    backdropClick.addEventListener("click", backdropClose)
+);*/
 
 profileFormButton.addEventListener("click", () => openProfilePopup());
 cardNewFormButton.addEventListener("click", () => openNewCardPopup());
