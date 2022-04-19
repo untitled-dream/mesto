@@ -10,7 +10,6 @@
     margin: 48px 36px 37px;
     padding: 0;
     border: none;
-    border-radius: 2px;
     cursor: pointer;
     transition: .25s opacity;
 }
