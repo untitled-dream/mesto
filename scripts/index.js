@@ -43,6 +43,7 @@ function handleCardAddFormSubmit(evt) {
 
     renderCard(newCard);
     closePopup(cardAddPopup);
+    
 }
 
 function getCard(name, source) {
@@ -65,11 +66,13 @@ function openProfilePopup() {
     nameInput.value = nameCurrent.textContent;
     descriptionInput.value = descriptionCurrent.textContent;
     openPopup(profilePopup);
+    enableValidation(formObject);
 }
 
 function openNewCardPopup() {
     cardAddForm.reset();
     openPopup(cardAddPopup);
+    enableValidation(formObject);
 }
 
 function openImagePopup(popup, name, source) {
@@ -82,6 +85,7 @@ function openImagePopup(popup, name, source) {
 
 function openPopup(popup) {
     popup.classList.add("popup_opened");
+    
     popup.addEventListener("click", backdropClose);
     document.addEventListener("keydown", handleModalEscapePress);
 }
@@ -93,14 +97,14 @@ function closePopup(popup) {
 function backdropClose(evt) {
     const popupClosedByBackdrop = evt.target;
     
-    if (evt.target.classList.contains("popup_opened")) {
+    if (popupClosedByBackdrop.classList.contains("popup_opened")) {
         handleCloseModal(popupClosedByBackdrop)
     }
 }
 
 function handleModalEscapePress(evt) {
     if (evt.key === "Escape") {
-        handleCloseModal()
+        handleCloseModal();
     }
 }
 
@@ -111,6 +115,7 @@ function handleCloseModal(popupClosedByBackdrop) {
     if (popupClosedByBackdrop) {
         popupClosedByBackdrop.removeEventListener("click", backdropClose);
     }
+    
   }
 
 function handleProfileFormSubmit(evt) {
@@ -132,18 +137,6 @@ function handleCardDeleteClick(evt) {
 document.querySelectorAll(".popup__button-close").forEach(closeButton =>
     closeButton.addEventListener("click", () => closePopup(closeButton.closest(".popup")))
 )
-
-/*document.querySelectorAll(".popup").forEach(backdropClick => 
-    backdropClick.addEventListener("click", function(evt) {
-        if (evt.target.classList.contains("popup_opened")) {
-            handleCloseModal()
-        }  
-    })
-);
-
-document.querySelectorAll(".popup").forEach(backdropClick => 
-    backdropClick.addEventListener("click", backdropClose)
-);*/
 
 profileFormButton.addEventListener("click", () => openProfilePopup());
 cardNewFormButton.addEventListener("click", () => openNewCardPopup());

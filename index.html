@@ -35,17 +35,17 @@
     <div class="popup" id="profile-edit">
       <div class="popup__container">
         <form class="form" id="profile-edit-form" name="profile-edit-form" novalidate>
-          <fieldset class="popup__fieldset">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <label class="popup__field">
-              <input class="popup__text" id="profile-name" name="profile-name" minlength="2" maxlength="40" placeholder="Имя" autocomplete="off">
-              <span class="popup__input-error"></span>
+          <fieldset class="form__fieldset">
+            <h2 class="form__title">Редактировать профиль</h2>
+            <label class="form__field">
+              <input class="form__input" id="profile-name" name="profile-name" minlength="2" maxlength="40" placeholder="Имя" autocomplete="off" required>
+              <span class="form__input-error profile-name-error"></span>
             </label>
-            <label class="popup__field">
-              <input class="popup__text" id="profile-description" name="profile-description" minlength="2" maxlength="200" placeholder="О себе" autocomplete="off">
-              <span class="popup__input-error"></span>
+            <label class="form__field">
+              <input class="form__input" id="profile-description" name="profile-description" minlength="2" maxlength="200" placeholder="О себе" autocomplete="off" required>
+              <span class="form__input-error profile-description-error"></span>
             </label>
-            <button class="popup__button-submit" type="submit" title="Сохранить изменения" disabled>Сохранить</button>
+            <button class="form__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
           </fieldset>
         </form>
         <button class="popup__button-close" type="button" title="Закрыть форму"></button>
@@ -54,17 +54,17 @@
     <div class="popup" id="card-add">
       <div class="popup__container">
         <form class="form" id="card-add-form" name="card-add-form" novalidate>
-          <fieldset class="popup__fieldset">
-            <h2 class="popup__title">Новое место</h2>
-            <label class="popup__field">
-              <input class="popup__text" id="card-name" name="card-name" minlength="2" maxlength="30" placeholder="Название" autocomplete="off" required>
-              <span class="popup__input-error"></span>
+          <fieldset class="form__fieldset">
+            <h2 class="form__title">Новое место</h2>
+            <label class="form__field">
+              <input class="form__input" id="card-name" name="card-name" minlength="2" maxlength="30" placeholder="Название" autocomplete="off" required>
+              <span class="form__input-error card-name-error"></span>
             </label>
-            <label class="popup__field">
-              <input class="popup__text" id="card-source" name="card-source" type="url" placeholder="Ссылка на картинку" autocomplete="off" required>
-              <span class="popup__input-error"></span>
+            <label class="form__field">
+              <input class="form__input" id="card-source" name="card-source" type="url" placeholder="Ссылка на картинку" autocomplete="off" required>
+              <span class="form__input-error card-source-error"></span>
             </label>
-            <button class="popup__button-submit" type="submit" title="Сохранить изменения" disabled>Создать</button>
+            <button class="form__button-submit" type="submit" title="Сохранить изменения">Создать</button>
           </fieldset>
         </form>
         <button class="popup__button-close" type="button" title="Закрыть форму"></button>
@@ -87,8 +87,8 @@
         <button class="elements__button-trash" type="button" title="Удалить запись"></button>
       </li>
     </template>
-    <script src="./scripts/cards.js"></script>
     <script src="./scripts/validate.js"></script>
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

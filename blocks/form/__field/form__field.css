@@ -1,9 +1,9 @@
-.popup__field {
+.form__field {
     display: flex;
-    margin: 0 38px;
+    margin: 0 36px;
     position: relative;
 }
 
-.popup__field:first-of-type {
+.form__field:first-of-type {
     margin-bottom: 30px
 }

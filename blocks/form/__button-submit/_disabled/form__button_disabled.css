@@ -1,0 +1,8 @@
+.form__button_disabled {
+    color: #000;
+    border: 1px solid #000;
+    background-color: #fff;
+    opacity: .2;
+    pointer-events: none;
+    user-select: none;
+}

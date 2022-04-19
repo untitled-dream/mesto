@@ -1,4 +1,4 @@
-.popup__text {
+.form__input {
     margin: 0;
     width: 358px;
     color: #000;
@@ -10,12 +10,12 @@
     line-height: 17px;
 }
 
-.popup__text:focus {
+.form__input:focus {
     outline: none;
 }
 
 @media screen and (max-width: 620px) {
-    .popup__text {
+    .form__input {
         margin-left: 22px;
         margin-right: 22px;
         width: 238px;
