@@ -37,8 +37,14 @@
         <form id="profile-edit-form" name="profile-edit-form">
           <fieldset class="popup__fieldset">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__text" id="profile-name" name="profile-name" minlength="2" maxlength="40" placeholder="Имя" autocomplete="off">
-            <input class="popup__text" id="profile-description" name="profile-description" placeholder="О себе" autocomplete="off">
+            <label class="popup__field">
+              <input class="popup__text" id="profile-name" name="profile-name" minlength="2" maxlength="40" placeholder="Имя" autocomplete="off">
+              <span class="popup__input-error">Текст ошибки</span>
+            </label>
+            <label class="popup__field">
+              <input class="popup__text" id="profile-description" name="profile-description" placeholder="О себе" autocomplete="off">
+              <span class="popup__input-error">Текст ошибки</span>
+            </label>
             <button class="popup__button-submit" type="submit" title="Сохранить изменения" disabled>Сохранить</button>
           </fieldset>
         </form>
@@ -50,8 +56,14 @@
         <form id="card-add-form" name="card-add-form">
           <fieldset class="popup__fieldset">
             <h2 class="popup__title">Новое место</h2>
-            <input class="popup__text" id="card-name" name="card-name" minlength="2" maxlength="30" placeholder="Название" autocomplete="off">
-            <input class="popup__text" id="card-source" name="card-source" type="url" placeholder="Ссылка на картинку" autocomplete="off">
+            <label class="popup__field">
+              <input class="popup__text" id="card-name" name="card-name" minlength="2" maxlength="30" placeholder="Название" autocomplete="off">
+              <span class="popup__input-error">Текст ошибки</span>
+            </label>
+            <label class="popup__field">
+              <input class="popup__text" id="card-source" name="card-source" type="url" placeholder="Ссылка на картинку" autocomplete="off">
+              <span class="popup__input-error">Текст ошибки</span>
+            </label>
             <button class="popup__button-submit" type="submit" title="Сохранить изменения" disabled>Создать</button>
           </fieldset>
         </form>

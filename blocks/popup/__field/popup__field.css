@@ -1,0 +1,9 @@
+.popup__field {
+    display: flex;
+    margin: 0 38px;
+    position: relative;
+}
+
+.popup__field:first-of-type {
+    margin-bottom: 30px
+}
