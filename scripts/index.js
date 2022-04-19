@@ -25,6 +25,9 @@ const descriptionCurrent = document.querySelector(".profile__description");
 const cardsList = document.querySelector(".elements__list");
 const cardsTemplate = document.querySelector("#card-template").content;
 
+nameInput.value = nameCurrent.textContent;
+descriptionInput.value = descriptionCurrent.textContent;
+
 let newCard;
 
 function renderCard(cardElement) {
@@ -57,14 +60,12 @@ function getCard(name, source) {
     
     cardElement.querySelector(".elements__button-like").addEventListener('click', handleLikeClick);
     cardElement.querySelector(".elements__button-trash").addEventListener("click", handleCardDeleteClick);
-    cardElement.querySelector(".elements__image").addEventListener("click", () => openImagePopup(imageViewPopup, name, source));
+    imageAttr.addEventListener("click", () => openImagePopup(imageViewPopup, name, source));
     
     return cardElement;
 }
 
 function openProfilePopup() {
-    nameInput.value = nameCurrent.textContent;
-    descriptionInput.value = descriptionCurrent.textContent;
     openPopup(profilePopup);
     enableValidation(formObject);
 }

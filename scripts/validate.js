@@ -64,6 +64,7 @@ const enableValidation = (formObject) => {
         formElement.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
+
         const fieldsetList = Array.from(formElement.querySelectorAll(formObject["formFieldset"]));
         
         fieldsetList.forEach((fieldset) => {
