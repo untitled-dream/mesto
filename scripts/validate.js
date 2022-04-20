@@ -3,7 +3,7 @@ const formObject = {
     formFieldset: ".form__fieldset",
     inputSelector: ".form__input",
     submitButtonSelector: ".form__button-submit",
-    inactiveButtonClass: "form__button_disabled",
+    inactiveButtonClass: "form__button-submit_disabled",
     inputErrorClass: "form__input_type_error",
     errorClass: "form__input-error_active"
 }
