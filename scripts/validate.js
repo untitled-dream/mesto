@@ -34,6 +34,7 @@ const checkInputValidity = (formElement, inputElement, formObject) => {
 const setEventListeners = (formElement, formObject) => {
     const inputList = Array.from(formElement.querySelectorAll(formObject.inputSelector));
     const buttonElement = formElement.querySelector(formObject.submitButtonSelector);
+    
     toggleButtonState(inputList, buttonElement, formObject);
     
     inputList.forEach((inputElement) => {
@@ -47,7 +48,6 @@ const setEventListeners = (formElement, formObject) => {
 const toggleButtonState = (inputList, buttonElement, formObject) => {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(formObject.inactiveButtonClass);
-        //buttonElement.setAttribute("disabled", true);
         buttonElement.disabled = true;
     } else {
         buttonElement.classList.remove(formObject.inactiveButtonClass);
@@ -56,6 +56,7 @@ const toggleButtonState = (inputList, buttonElement, formObject) => {
 }
 
 const hasInvalidInput = (inputList) => {
+    
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
     });
@@ -75,3 +76,5 @@ const enableValidation = (formObject) => {
         });
     })
 };
+
+enableValidation(formObject);

@@ -28,25 +28,22 @@ const cardsTemplate = document.querySelector("#card-template").content;
 nameInput.value = nameCurrent.textContent;
 descriptionInput.value = descriptionCurrent.textContent;
 
-let newCard;
-
 function renderCard(cardElement) {
     cardsList.prepend(cardElement);
 }
 
 defaultCards.forEach(function (card) {
-    newCard = getCard(card.name, card.source);
+    const newCard = getCard(card.name, card.source);
     renderCard(newCard);
 })
 
 function handleCardAddFormSubmit(evt) {
     evt.preventDefault();
     
-    newCard = getCard(cardNameInput.value, cardSourceInput.value);
+    const newCard = getCard(cardNameInput.value, cardSourceInput.value);
 
     renderCard(newCard);
     closePopup(cardAddPopup);
-    
 }
 
 function getCard(name, source) {
@@ -67,17 +64,14 @@ function getCard(name, source) {
 
 function openProfilePopup() {
     openPopup(profilePopup);
-    enableValidation(formObject);
 }
 
 function openNewCardPopup() {
     cardAddForm.reset();
     openPopup(cardAddPopup);
-    enableValidation(formObject);
-}
+}   
 
 function openImagePopup(popup, name, source) {
-    popup.style.background = "rgba(0,0,0,.9)";
     cardCaption.textContent = name;
     cardImage.src = source;
     cardImage.alt = name;
@@ -87,37 +81,31 @@ function openImagePopup(popup, name, source) {
 function openPopup(popup) {
     popup.classList.add("popup_opened");
     
-    popup.addEventListener("click", backdropClose);
+    popup.addEventListener("click", handleOverlayClose);
     document.addEventListener("keydown", handleModalEscapePress);
 }
 
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
+    
+    popup.removeEventListener("click", handleOverlayClose);
+    document.removeEventListener('keydown', handleModalEscapePress);
 }
 
-function backdropClose(evt) {
+function handleOverlayClose(evt) {
     const popupClosedByBackdrop = evt.target;
     
     if (popupClosedByBackdrop.classList.contains("popup_opened")) {
-        handleCloseModal(popupClosedByBackdrop)
+        closePopup(popupClosedByBackdrop);
     }
 }
 
 function handleModalEscapePress(evt) {
     if (evt.key === "Escape") {
-        handleCloseModal();
+        const currentOpenPopup = document.querySelector(".popup_opened");
+        closePopup(currentOpenPopup)
     }
 }
-
-function handleCloseModal(popupClosedByBackdrop) {
-    document.querySelector(".popup_opened").classList.remove("popup_opened");
-    document.removeEventListener('keydown', handleModalEscapePress);
-    
-    if (popupClosedByBackdrop) {
-        popupClosedByBackdrop.removeEventListener("click", backdropClose);
-    }
-    
-  }
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
