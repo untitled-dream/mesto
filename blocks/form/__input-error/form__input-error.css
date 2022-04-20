@@ -9,9 +9,7 @@
 
 @media screen and (max-width: 620px) {
     .form__input-error {
-        width: 238px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
+        font-size: 10px;
+        line-height: 12px;
     }    
 }
