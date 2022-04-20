@@ -9,7 +9,6 @@
 
 @media screen and (max-width: 620px) {
     .form__input-error {
-        margin: 0 22px;
         width: 238px;
         text-overflow: ellipsis;
         overflow: hidden;
