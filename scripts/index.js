@@ -1,3 +1,5 @@
+import Card from './Card.js';
+
 const profilePopup = document.querySelector("#profile-edit");
 const profileForm = document.forms["profile-edit-form"];
 
@@ -22,19 +24,13 @@ const cardCaption = imageViewPopup.querySelector("#card-caption");
 const nameCurrent = document.querySelector(".profile__name");
 const descriptionCurrent = document.querySelector(".profile__description");
 
-const cardsList = document.querySelector(".elements__list");
-const cardsTemplate = document.querySelector("#card-template").content;
+const cardsTemplate = document.querySelector("#card-template").content.cloneNode(true);
 
-function renderCard(cardElement) {
+/*function renderCard(cardElement) {
     cardsList.prepend(cardElement);
-}
+}*/
 
-defaultCards.forEach(function (card) {
-    const newCard = getCard(card.name, card.source);
-    renderCard(newCard);
-})
-
-function getCard(name, source) {
+/*function getCard(name, source) {
     const cardElement = cardsTemplate.cloneNode(true);
     const imageAttr = cardElement.querySelector(".elements__image");
 
@@ -48,7 +44,7 @@ function getCard(name, source) {
     imageAttr.addEventListener("click", () => openImagePopup(imageViewPopup, name, source));
     
     return cardElement;
-}
+}*/
 
 function openProfilePopup() {
     nameInput.value = nameCurrent.textContent;
@@ -114,8 +110,11 @@ function handleProfileFormSubmit(evt) {
 function handleCardAddFormSubmit(evt) {
     evt.preventDefault();
     
-    const newCard = getCard(cardNameInput.value, cardSourceInput.value);
-    renderCard(newCard);
+
+    const card = new Card({ name: cardNameInput.value, source: cardSourceInput.value }, "#card-template");
+    const cardElement = card.getCard();
+    card._renderCard(cardElement);
+
     closePopup(cardAddPopup);
 }
 
