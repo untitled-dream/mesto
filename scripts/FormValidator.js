@@ -71,4 +71,4 @@ ProfileFormValidation.enableValidation();
 const AddCardFormValidation = new FormValidator(formObject, cardAddPopup);
 AddCardFormValidation.enableValidation();
 
-export { profilePopup, cardAddPopup, ProfileFormValidation, AddCardFormValidation, formObject }
+export { ProfileFormValidation, AddCardFormValidation }
