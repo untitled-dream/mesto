@@ -52,7 +52,7 @@ class Card {
     }
 
     _handleCardDeleteClick() {
-        this._element.querySelector(".elements__button-trash").closest(".elements__card").remove()
+        this._element.querySelector(".elements__button-trash").closest(".elements__card").remove();
     }
 
     _openImagePopup(popup, name, source) {
