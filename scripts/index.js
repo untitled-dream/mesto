@@ -1,6 +1,6 @@
-import { profilePopup, cardAddPopup } from "./variables.js"
+import { profilePopup, cardAddPopup, formObject } from "./variables.js"
 import { Card, templateSelector } from './Card.js';
-import { ProfileFormValidation, AddCardFormValidation, formObject } from './FormValidator.js';
+import { ProfileFormValidation, AddCardFormValidation } from './FormValidator.js';
 
 const profileForm = document.forms["profile-edit-form"];
 const profileFormButton = document.querySelector(".profile__button-edit");
