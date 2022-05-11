@@ -21,17 +21,17 @@ class Card {
 
     getCard() {
         this._element = this._getTemplate();
-        
-        this._element.querySelector(".elements__title").textContent = this._name;
 
         const imageAttr = this._element.querySelector(".elements__image");
         imageAttr.src = this._source;
-        imageAttr.alt = this._name;
-        
+        imageAttr.alt = this._source;
+
+        this._element.querySelector(".elements__title").textContent = this._name;
+
         imageAttr.addEventListener("click", () => {
             this._openImagePopup(imageViewPopup, this._name, this._source)
         });
-        
+        const cardElement = '';
         this._setEventListeners();
 
         return this._element;
@@ -47,12 +47,12 @@ class Card {
         });
     }
 
-    _handleLikeClick(evt) {
+    _handleLikeClick() {
         this._element.querySelector(".elements__button-like").classList.toggle("elements__button-like_active");
     }
 
     _handleCardDeleteClick() {
-        this._element.querySelector(".elements__button-trash").closest(".elements__card").remove();
+        this._element.querySelector(".elements__button-trash").closest(".elements__card").remove()
     }
 
     _openImagePopup(popup, name, source) {
