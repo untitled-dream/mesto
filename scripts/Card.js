@@ -22,12 +22,12 @@ class Card {
     getCard() {
         this._element = this._getTemplate();
         
+        this._element.querySelector(".elements__title").textContent = this._name;
+
         const imageAttr = this._element.querySelector(".elements__image");
         imageAttr.src = this._source;
-        imageAttr.alt = this._source;
+        imageAttr.alt = this._name;
         
-        this._element.querySelector(".elements__title").textContent = this._name;   
-
         imageAttr.addEventListener("click", () => {
             this._openImagePopup(imageViewPopup, this._name, this._source)
         });
