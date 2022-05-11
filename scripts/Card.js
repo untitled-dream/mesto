@@ -31,8 +31,7 @@ class Card {
         imageAttr.addEventListener("click", () => {
             this._openImagePopup(imageViewPopup, this._name, this._source)
         });
-        const cardElement = '';
-        
+                
         this._setEventListeners();
 
         return this._element;
