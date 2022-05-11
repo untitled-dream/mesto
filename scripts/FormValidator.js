@@ -1,15 +1,5 @@
-const formObject = {
-    formSelector: ".form",
-    formFieldset: ".form__fieldset",
-    inputSelector: ".form__input",
-    submitButtonSelector: ".form__button-submit",
-    inactiveButtonClass: "form__button-submit_disabled",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error_active"
-}
-
-const profilePopup = document.querySelector("#profile-edit");
-const cardAddPopup = document.querySelector("#card-add");
+import { formObject } from "./variables.js"
+import { profilePopup, cardAddPopup } from "./variables.js"
 
 class FormValidator {
     constructor(formObject, formElement) {
@@ -32,7 +22,7 @@ class FormValidator {
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._checkInputValidity(formElement, inputElement);
-                this._toggleButtonState(inputList, buttonElement);
+                this.toggleButtonState(inputList, buttonElement);
             });
         });
     }
@@ -45,7 +35,7 @@ class FormValidator {
         }
     };
 
-    _toggleButtonState(inputList, buttonElement) {
+    toggleButtonState(inputList, buttonElement) {
         if (this._hasInvalidInput(inputList)) {
             buttonElement.classList.add(this._formObject.inactiveButtonClass);
             buttonElement.disabled = true;
@@ -76,11 +66,10 @@ class FormValidator {
     }
 }
 
-
 const ProfileFormValidation = new FormValidator(formObject, profilePopup);
 ProfileFormValidation.enableValidation();
 
 const AddCardFormValidation = new FormValidator(formObject, cardAddPopup);
 AddCardFormValidation.enableValidation();
 
-export { ProfileFormValidation, AddCardFormValidation, formObject }
+export { profilePopup, cardAddPopup, ProfileFormValidation, AddCardFormValidation, formObject }

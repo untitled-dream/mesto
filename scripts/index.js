@@ -1,15 +1,17 @@
 import { Card, templateSelector } from './Card.js';
+import { profilePopup, cardAddPopup } from "./variables.js"
 import { ProfileFormValidation, AddCardFormValidation, formObject } from './FormValidator.js';
+
 
 const profileForm = document.forms["profile-edit-form"];
 const profileFormButton = document.querySelector(".profile__button-edit");
-const nameInput = ProfileFormValidation._formElement.querySelector("#profile-name");
-const descriptionInput = ProfileFormValidation._formElement.querySelector("#profile-description");
+const nameInput = profilePopup.querySelector("#profile-name");
+const descriptionInput = profilePopup.querySelector("#profile-description");
 
 const cardAddForm = document.forms["card-add-form"];
 const cardNewFormButton = document.querySelector(".profile__button-add");
-const cardNameInput = AddCardFormValidation._formElement.querySelector("#card-name");
-const cardSourceInput = AddCardFormValidation._formElement.querySelector("#card-source");
+const cardNameInput = cardAddPopup.querySelector("#card-name");
+const cardSourceInput = cardAddPopup.querySelector("#card-source");
 
 const nameCurrent = document.querySelector(".profile__name");
 const descriptionCurrent = document.querySelector(".profile__description");
@@ -18,16 +20,14 @@ function openProfilePopup() {
     nameInput.value = nameCurrent.textContent;
     descriptionInput.value = descriptionCurrent.textContent;
     
-    ProfileFormValidation._toggleButtonState(Array.from(ProfileFormValidation._formElement.querySelectorAll(formObject.inputSelector)), ProfileFormValidation._formElement.querySelector(formObject.submitButtonSelector));
-
+    ProfileFormValidation.toggleButtonState(Array.from(ProfileFormValidation._formElement.querySelectorAll(formObject.inputSelector)), ProfileFormValidation._formElement.querySelector(formObject.submitButtonSelector));
     openPopup(ProfileFormValidation._formElement);
 }
 
 function openNewCardPopup() {
     cardAddForm.reset();
 
-    AddCardFormValidation._toggleButtonState(Array.from(AddCardFormValidation._formElement.querySelectorAll(formObject.inputSelector)), AddCardFormValidation._formElement.querySelector(formObject.submitButtonSelector));
-
+    AddCardFormValidation.toggleButtonState(Array.from(AddCardFormValidation._formElement.querySelectorAll(formObject.inputSelector)), AddCardFormValidation._formElement.querySelector(formObject.submitButtonSelector));  
     openPopup(AddCardFormValidation._formElement);
 }
 

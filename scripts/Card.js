@@ -1,36 +1,5 @@
 import { openPopup } from "./index.js";
-
-const defaultCards = [
-    {
-        name: "Казанский кремль",
-        source: "./images/photo-grid-kazan.jpg"
-    },
-    {
-        name: "МГУ, Москва",
-        source: "./images/photo-grid-moscow-2.jpg"
-    },
-    {
-        name: "о. Эгина, Греция",
-        source: "./images/photo-grid-aegina.jpg"
-    },
-    {
-        name: "Куршская Коса",
-        source: "./images/photo-grid-kurshskaya-kosa.jpg"
-    },
-    {
-        name: "Москва",
-        source: "./images/photo-grid-moscow-1.jpg"
-    },
-    {
-        name: "Афины",
-        source: "./images/photo-grid-athens.jpg"
-    }
-];
-
-const templateSelector = "#card-template";
-const imageViewPopup = document.querySelector("#card-view");
-const cardCaption = imageViewPopup.querySelector("#card-caption");
-const cardImage = imageViewPopup.querySelector("#card-image");
+import { defaultCards, templateSelector, imageViewPopup, cardCaption, cardImage } from "./variables.js"
 
 class Card {
     constructor(data, cardsTemplateSelector) {
@@ -40,7 +9,7 @@ class Card {
     }
 
     _getTemplate() {
-        const cardElement = document.querySelector(this._cardsTemplateSelector).content.cloneNode(true);
+        const cardElement = document.querySelector(this._cardsTemplateSelector).content.querySelector(".elements__card").cloneNode(true);
 
         return cardElement;
     }
@@ -52,8 +21,7 @@ class Card {
 
     getCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
-
+        
         const imageAttr = this._element.querySelector(".elements__image");
         imageAttr.src = this._source;
         imageAttr.alt = this._source;
@@ -64,25 +32,27 @@ class Card {
             this._openImagePopup(imageViewPopup, this._name, this._source)
         });
         
+        this._setEventListeners();
+
         return this._element;
     }
 
     _setEventListeners() {
-        this._element.querySelector(".elements__button-like").addEventListener('click', (evt) => {
-            this._handleLikeClick(evt);
+        this._element.querySelector(".elements__button-like").addEventListener('click', () => {
+            this._handleLikeClick();
         });
 
-        this._element.querySelector(".elements__button-trash").addEventListener("click", (evt) => {
-            this._handleCardDeleteClick(evt);
+        this._element.querySelector(".elements__button-trash").addEventListener("click", () => {
+            this._handleCardDeleteClick();
         });
     }
 
     _handleLikeClick(evt) {
-        evt.target.classList.toggle("elements__button-like_active");
+        this._element.querySelector(".elements__button-like").classList.toggle("elements__button-like_active");
     }
 
-    _handleCardDeleteClick(evt) {
-        evt.target.closest(".elements__card").remove();
+    _handleCardDeleteClick() {
+        this._element.querySelector(".elements__button-trash").closest(".elements__card").remove()
     }
 
     _openImagePopup(popup, name, source) {
