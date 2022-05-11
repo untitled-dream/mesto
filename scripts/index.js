@@ -1,5 +1,5 @@
-import { profilePopup, cardAddPopup, formObject } from "./class-variables.js"
-import { Card, templateSelector } from './Card.js';
+import { profilePopup, cardAddPopup, templateSelector, formObject } from "./class-variables.js"
+import { Card } from './Card.js';
 import { ProfileFormValidation, AddCardFormValidation } from './FormValidator.js';
 
 const profileForm = document.forms["profile-edit-form"];

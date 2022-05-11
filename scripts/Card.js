@@ -70,4 +70,4 @@ defaultCards.forEach((cards) => {
     card._renderCard(cardElement);
 })
 
-export { Card, templateSelector }
+export { Card }
