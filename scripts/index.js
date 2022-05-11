@@ -1,7 +1,6 @@
 import { Card, templateSelector } from './Card.js';
 import { ProfileFormValidation, AddCardFormValidation, formObject } from './FormValidator.js';
 
-
 const profileForm = document.forms["profile-edit-form"];
 const profileFormButton = document.querySelector(".profile__button-edit");
 const nameInput = ProfileFormValidation._formElement.querySelector("#profile-name");

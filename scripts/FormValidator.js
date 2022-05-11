@@ -11,7 +11,7 @@ const formObject = {
 const profilePopup = document.querySelector("#profile-edit");
 const cardAddPopup = document.querySelector("#card-add");
 
-export default class FormValidator {
+class FormValidator {
     constructor(formObject, formElement) {
         this._formObject = formObject;
         this._formElement = formElement;
