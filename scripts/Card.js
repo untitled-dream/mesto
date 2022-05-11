@@ -1,3 +1,5 @@
+import { openPopup } from "./index.js";
+
 const defaultCards = [
     {
         name: "Казанский кремль",
@@ -25,9 +27,12 @@ const defaultCards = [
     }
 ];
 
+const templateSelector = "#card-template";
 const imageViewPopup = document.querySelector("#card-view");
+const cardCaption = imageViewPopup.querySelector("#card-caption");
+const cardImage = imageViewPopup.querySelector("#card-image");
 
-export default class Card {
+class Card {
     constructor(data, cardsTemplateSelector) {
         this._name = data.name;
         this._source = data.source;
@@ -55,7 +60,9 @@ export default class Card {
         
         this._element.querySelector(".elements__title").textContent = this._name;   
 
-        imageAttr.addEventListener("click", () => openImagePopup(imageViewPopup, this._name, this._source));
+        imageAttr.addEventListener("click", () => {
+            this._openImagePopup(imageViewPopup, this._name, this._source)
+        });
         
         return this._element;
     }
@@ -77,11 +84,20 @@ export default class Card {
     _handleCardDeleteClick(evt) {
         evt.target.closest(".elements__card").remove();
     }
+
+    _openImagePopup(popup, name, source) {
+        cardCaption.textContent = name;
+        cardImage.src = source;
+        cardImage.alt = name;
+        openPopup(popup);
+    }
 }
 
 defaultCards.forEach((cards) => {
-    const card = new Card(cards, "#card-template");
+    const card = new Card(cards, templateSelector);
     const cardElement = card.getCard();
+    
     card._renderCard(cardElement);
-    //document.querySelector(".elements__list").prepend(cardElement);
 })
+
+export { Card, templateSelector }
