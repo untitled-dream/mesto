@@ -1,5 +1,4 @@
-import { formObject } from "./variables.js"
-import { profilePopup, cardAddPopup } from "./variables.js"
+import { profilePopup, cardAddPopup, formObject } from "./class-variables.js"
 
 class FormValidator {
     constructor(formObject, formElement) {

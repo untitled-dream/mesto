@@ -1,5 +1,5 @@
 import { openPopup } from "./index.js";
-import { defaultCards, templateSelector, imageViewPopup, cardCaption, cardImage } from "./variables.js"
+import { defaultCards, templateSelector, imageViewPopup, cardCaption, cardImage } from "./class-variables.js"
 
 class Card {
     constructor(data, cardsTemplateSelector) {

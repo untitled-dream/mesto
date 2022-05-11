@@ -1,4 +1,4 @@
-import { profilePopup, cardAddPopup, formObject } from "./variables.js"
+import { profilePopup, cardAddPopup, formObject } from "./class-variables.js"
 import { Card, templateSelector } from './Card.js';
 import { ProfileFormValidation, AddCardFormValidation } from './FormValidator.js';
 
