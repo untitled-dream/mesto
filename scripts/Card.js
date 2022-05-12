@@ -22,44 +22,49 @@ class Card {
     getCard() {
         this._element = this._getTemplate();
 
-        const imageAttr = this._element.querySelector(".elements__image");
-        imageAttr.src = this._source;
-        imageAttr.alt = this._name;
+        const cardElementSelector = {
+            image: this._element.querySelector(".elements__image"),
+            title: this._element.querySelector(".elements__title"),
+            likeButton: this._element.querySelector(".elements__button-like"),
+            trashButton: this._element.querySelector(".elements__button-trash")
+        }
 
-        this._element.querySelector(".elements__title").textContent = this._name;
+        cardElementSelector.image.src = this._source;
+        cardElementSelector.image.alt = this._name;
+        cardElementSelector.title.textContent = this._name;
 
-        imageAttr.addEventListener("click", () => {
-            this._openImagePopup(imageViewPopup, this._name, this._source)
-        });
-                
-        this._setEventListeners();
+        this._setEventListeners(cardElementSelector);
 
         return this._element;
     }
 
-    _setEventListeners() {
-        this._element.querySelector(".elements__button-like").addEventListener('click', () => {
-            this._handleLikeClick();
+    _setEventListeners = ({ likeButton, image, trashButton }) => {
+        likeButton.addEventListener('click', () => {
+            this._handleLikeClick(likeButton);
         });
 
-        this._element.querySelector(".elements__button-trash").addEventListener("click", () => {
+        image.addEventListener("click", () => {
+            this._openImagePopup(imageViewPopup)
+        })
+
+        trashButton.addEventListener("click", () => {
             this._handleCardDeleteClick();
         });
     }
 
-    _handleLikeClick() {
-        this._element.querySelector(".elements__button-like").classList.toggle("elements__button-like_active");
+    _handleLikeClick(likeButton) {
+        likeButton.classList.toggle("elements__button-like_active");
     }
 
     _handleCardDeleteClick() {
         this._element.remove();
     }
 
-    _openImagePopup(popup, name, source) {
-        cardCaption.textContent = name;
-        cardImage.src = source;
-        cardImage.alt = name;
-        openPopup(popup);
+    _openImagePopup(imageViewPopup) {
+        cardCaption.textContent = this._name;
+        cardImage.src = this._source;
+        cardImage.alt = this._name;
+        openPopup(imageViewPopup);
     }
 }
 
