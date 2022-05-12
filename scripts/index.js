@@ -44,6 +44,7 @@ function handleCardAddFormSubmit(evt) {
     evt.preventDefault();
     
     createCard({ name: cardNameInput.value, source: cardSourceInput.value });
+    
     closePopup(AddCardFormValidation._formElement);
 }
 
@@ -54,7 +55,7 @@ defaultCards.forEach((cards) => {
 function createCard(cardData) {
     const card = new Card(cardData, templateSelector);
     const cardElement = card.getCard();
-    card._renderCard(cardElement);
+    card.renderCard(cardElement);
 }
 
 document.querySelectorAll(".popup__button-close").forEach(closeButton =>

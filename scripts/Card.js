@@ -14,7 +14,7 @@ class Card {
         return cardElement;
     }
 
-    _renderCard(cardElement) {
+    renderCard(cardElement) {
         const cardsList = document.querySelector(".elements__list");
         cardsList.prepend(cardElement);
     }
