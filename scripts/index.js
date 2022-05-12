@@ -1,6 +1,7 @@
-import { profilePopup, cardAddPopup, templateSelector, formObject } from "./class-variables.js"
 import { Card } from "./Card.js";
+import { openPopup, closePopup } from "./utils.js"
 import { ProfileFormValidation, AddCardFormValidation } from "./FormValidator.js";
+import { profilePopup, cardAddPopup, templateSelector, defaultCards, formObject } from "./class-variables.js"
 
 const profileForm = document.forms["profile-edit-form"];
 const profileFormButton = document.querySelector(".profile__button-edit");
@@ -30,35 +31,6 @@ function openNewCardPopup() {
     openPopup(AddCardFormValidation._formElement);
 }
 
-function openPopup(popup) {
-    popup.classList.add("popup_opened");
-    
-    popup.addEventListener("mousedown", handleOverlayClose);
-    document.addEventListener("keydown", handleModalEscapePress);
-}
-
-function closePopup(popup) {
-    popup.classList.remove("popup_opened");
-
-    popup.removeEventListener("mousedown", handleOverlayClose);
-    document.removeEventListener('keydown', handleModalEscapePress);
-}
-
-function handleOverlayClose(evt) {
-    const popupClosedByBackdrop = evt.target;
-    
-    if (popupClosedByBackdrop.classList.contains("popup_opened")) {
-        closePopup(popupClosedByBackdrop);
-    }
-}
-
-function handleModalEscapePress(evt) {
-    if (evt.key === "Escape") {
-        const currentOpenPopup = document.querySelector(".popup_opened");
-        closePopup(currentOpenPopup)
-    }
-}
-
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     
@@ -71,11 +43,18 @@ function handleProfileFormSubmit(evt) {
 function handleCardAddFormSubmit(evt) {
     evt.preventDefault();
     
-    const card = new Card({ name: cardNameInput.value, source: cardSourceInput.value }, templateSelector);
+    createCard({ name: cardNameInput.value, source: cardSourceInput.value });
+    closePopup(AddCardFormValidation._formElement);
+}
+
+defaultCards.forEach((cards) => {
+    createCard(cards);
+})
+
+function createCard(cardData) {
+    const card = new Card(cardData, templateSelector);
     const cardElement = card.getCard();
     card._renderCard(cardElement);
-
-    closePopup(AddCardFormValidation._formElement);
 }
 
 document.querySelectorAll(".popup__button-close").forEach(closeButton =>
@@ -87,5 +66,3 @@ cardNewFormButton.addEventListener("click", () => openNewCardPopup());
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardAddForm.addEventListener("submit", handleCardAddFormSubmit);
-
-export { openPopup }

@@ -1,5 +1,5 @@
-import { openPopup } from "./index.js";
-import { defaultCards, templateSelector, imageViewPopup, cardCaption, cardImage } from "./class-variables.js"
+import { openPopup } from "./utils.js"
+import { imageViewPopup, cardCaption, cardImage } from "./class-variables.js"
 
 class Card {
     constructor(data, cardsTemplateSelector) {
@@ -52,7 +52,7 @@ class Card {
     }
 
     _handleCardDeleteClick() {
-        this._element.querySelector(".elements__button-trash").closest(".elements__card").remove()
+        this._element.remove();
     }
 
     _openImagePopup(popup, name, source) {
@@ -62,12 +62,5 @@ class Card {
         openPopup(popup);
     }
 }
-
-defaultCards.forEach((cards) => {
-    const card = new Card(cards, templateSelector);
-    const cardElement = card.getCard();
-
-    card._renderCard(cardElement);
-})
 
 export { Card }
