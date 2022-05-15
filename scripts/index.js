@@ -25,7 +25,7 @@ function openProfilePopup() {
 }
 
 function openNewCardPopup() {
-    cardAddForm.reset();
+    
 
     AddCardFormValidation.toggleButtonState(Array.from(AddCardFormValidation._formElement.querySelectorAll(formObject.inputSelector)), AddCardFormValidation._formElement.querySelector(formObject.submitButtonSelector));  
     openPopup(AddCardFormValidation._formElement);
@@ -44,8 +44,8 @@ function handleCardAddFormSubmit(evt) {
     evt.preventDefault();
     
     createCard({ name: cardNameInput.value, source: cardSourceInput.value });
-    
     closePopup(AddCardFormValidation._formElement);
+    cardAddForm.reset();
 }
 
 defaultCards.forEach((cards) => {
