@@ -16,6 +16,16 @@ const cardSourceInput = cardAddPopup.querySelector("#card-source");
 const nameCurrent = document.querySelector(".profile__name");
 const descriptionCurrent = document.querySelector(".profile__description");
 
+defaultCards.forEach((cards) => {
+    createCard(cards);
+})
+
+function createCard(cardData) {
+    const card = new Card(cardData, templateSelector);
+    const cardElement = card.getCard();
+    card.renderCard(cardElement);
+}
+
 function openProfilePopup() {
     nameInput.value = nameCurrent.textContent;
     descriptionInput.value = descriptionCurrent.textContent;
@@ -25,8 +35,6 @@ function openProfilePopup() {
 }
 
 function openNewCardPopup() {
-    
-
     AddCardFormValidation.toggleButtonState(Array.from(AddCardFormValidation._formElement.querySelectorAll(formObject.inputSelector)), AddCardFormValidation._formElement.querySelector(formObject.submitButtonSelector));  
     openPopup(AddCardFormValidation._formElement);
 }
@@ -47,20 +55,6 @@ function handleCardAddFormSubmit(evt) {
     closePopup(AddCardFormValidation._formElement);
     cardAddForm.reset();
 }
-
-defaultCards.forEach((cards) => {
-    createCard(cards);
-})
-
-function createCard(cardData) {
-    const card = new Card(cardData, templateSelector);
-    const cardElement = card.getCard();
-    card.renderCard(cardElement);
-}
-
-document.querySelectorAll(".popup__button-close").forEach(closeButton =>
-    closeButton.addEventListener("click", () => closePopup(closeButton.closest(".popup")))
-)
 
 profileFormButton.addEventListener("click", () => openProfilePopup());
 cardNewFormButton.addEventListener("click", () => openNewCardPopup());

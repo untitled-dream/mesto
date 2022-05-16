@@ -5,7 +5,14 @@ export function openPopup(popup) {
     document.addEventListener("keydown", handleModalEscapePress);
 }
 
-export function handleOverlayClose(evt) {
+export function closePopup(popup) {
+    popup.classList.remove("popup_opened");
+
+    popup.removeEventListener("mousedown", handleOverlayClose);
+    document.removeEventListener('keydown', handleModalEscapePress);
+}
+
+function handleOverlayClose(evt) {
     const popupClosedByBackdrop = evt.target;
 
     if (popupClosedByBackdrop.classList.contains("popup_opened")) {
@@ -13,16 +20,13 @@ export function handleOverlayClose(evt) {
     }
 }
 
-export function handleModalEscapePress(evt) {
+function handleModalEscapePress(evt) {
     if (evt.key === "Escape") {
         const currentOpenPopup = document.querySelector(".popup_opened");
         closePopup(currentOpenPopup)
     }
 }
 
-export function closePopup(popup) {
-    popup.classList.remove("popup_opened");
-
-    popup.removeEventListener("mousedown", handleOverlayClose);
-    document.removeEventListener('keydown', handleModalEscapePress);
-}
+document.querySelectorAll(".popup__button-close").forEach(closeButton =>
+    closeButton.addEventListener("click", () => closePopup(closeButton.closest(".popup")))
+)

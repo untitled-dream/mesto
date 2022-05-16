@@ -3,15 +3,12 @@ import { imageViewPopup, cardCaption, cardImage } from "./class-variables.js"
 
 class Card {
     constructor(data, cardsTemplateSelector) {
-        this._name = data.name;
-        this._source = data.source;
+        this._data = data;
         this._cardsTemplateSelector = cardsTemplateSelector;
     }
 
     _getTemplate() {
-        const cardElement = document.querySelector(this._cardsTemplateSelector).content.querySelector(".elements__card").cloneNode(true);
-
-        return cardElement;
+        return document.querySelector(this._cardsTemplateSelector).content.querySelector(".elements__card").cloneNode(true);
     }
 
     renderCard(cardElement) {
@@ -21,7 +18,6 @@ class Card {
 
     getCard() {
         this._element = this._getTemplate();
-
         const cardElementSelector = {
             image: this._element.querySelector(".elements__image"),
             title: this._element.querySelector(".elements__title"),
@@ -29,9 +25,9 @@ class Card {
             trashButton: this._element.querySelector(".elements__button-trash")
         }
 
-        cardElementSelector.image.src = this._source;
-        cardElementSelector.image.alt = this._name;
-        cardElementSelector.title.textContent = this._name;
+        cardElementSelector.image.src = this._data.source;
+        cardElementSelector.image.alt = this._data.name;
+        cardElementSelector.title.textContent = this._data.name;
 
         this._setEventListeners(cardElementSelector);
 
@@ -61,9 +57,9 @@ class Card {
     }
 
     _openImagePopup(imageViewPopup) {
-        cardCaption.textContent = this._name;
-        cardImage.src = this._source;
-        cardImage.alt = this._name;
+        cardCaption.textContent = this._data.name;
+        cardImage.src = this._data.source;
+        cardImage.alt = this._data.name;
         openPopup(imageViewPopup);
     }
 }
