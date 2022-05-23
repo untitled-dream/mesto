@@ -1,9 +1,10 @@
 import { openPopup } from "./utils.js"
-import { imageViewPopup, cardCaption, cardImage } from "./class-variables.js"
+import { imageViewPopup, cardCaption, cardImage } from "./constants.js"
 
 class Card {
-    constructor(data, cardsTemplateSelector) {
-        this._data = data;
+    constructor({name, source}, cardsTemplateSelector) {
+        this._name = name;
+        this._source = source;
         this._cardsTemplateSelector = cardsTemplateSelector;
     }
 
@@ -25,9 +26,9 @@ class Card {
             trashButton: this._element.querySelector(".elements__button-trash")
         }
 
-        cardElementSelector.image.src = this._data.source;
-        cardElementSelector.image.alt = this._data.name;
-        cardElementSelector.title.textContent = this._data.name;
+        cardElementSelector.image.src = this._source;
+        cardElementSelector.image.alt = this._name;
+        cardElementSelector.title.textContent = this._name;
 
         this._setEventListeners(cardElementSelector);
 
@@ -57,9 +58,9 @@ class Card {
     }
 
     _openImagePopup(imageViewPopup) {
-        cardCaption.textContent = this._data.name;
-        cardImage.src = this._data.source;
-        cardImage.alt = this._data.name;
+        cardCaption.textContent = this._name;
+        cardImage.src = this._source;
+        cardImage.alt = this._name;
         openPopup(imageViewPopup);
     }
 }
