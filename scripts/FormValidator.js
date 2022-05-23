@@ -19,6 +19,7 @@ class FormValidator {
         });
 
         this._setEventListeners(this._formElement.querySelector(this._formFieldset));
+        console.log(this._formElement.querySelector(this._formFieldset));
     }
 
     setInitialState({ formElement }) {
