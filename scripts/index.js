@@ -21,15 +21,13 @@ function openProfilePopup() {
     descriptionInput.value = descriptionCurrent.textContent;
 
     ProfileFormValidation.setInitialState({ inputList: ProfileFormValidation._inputList, formElement: ProfileFormValidation._formElement });
-
     openPopup(ProfileFormValidation._formElement);
 }
 
 function openNewCardPopup() {
     cardAddForm.reset();
 
-    AddCardFormValidation.setInitialState({ inputList: AddCardFormValidation._inputList, formElement: AddCardFormValidation._formElement });
-    
+    AddCardFormValidation.setInitialState({ formElement: AddCardFormValidation._formElement });
     openPopup(AddCardFormValidation._formElement);
 }
 
