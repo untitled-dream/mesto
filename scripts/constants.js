@@ -31,7 +31,7 @@ export const cardCaption = imageViewPopup.querySelector("#card-caption");
 export const cardImage = imageViewPopup.querySelector("#card-image");
 
 export const formObject = {
-    formFieldset: ".form__fieldset",
+    fieldsetSelector: ".form__fieldset",
     inputSelector: ".form__input",
     submitButtonSelector: ".form__button-submit",
     inactiveButtonClass: "form__button-submit_disabled",

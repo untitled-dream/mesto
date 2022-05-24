@@ -1,7 +1,7 @@
 import { Card } from "./Card.js";
 import { openPopup, closePopup } from "./utils.js"
 import { ProfileFormValidation, AddCardFormValidation } from "./FormValidator.js";
-import { profilePopup, cardAddPopup, templateSelector, defaultCards, formObject } from "./constants.js"
+import { profilePopup, cardAddPopup, templateSelector, defaultCards } from "./constants.js"
 
 const profileForm = document.forms["profile-edit-form"];
 const profileFormButton = document.querySelector(".profile__button-edit");
@@ -20,15 +20,15 @@ function openProfilePopup() {
     nameInput.value = nameCurrent.textContent;
     descriptionInput.value = descriptionCurrent.textContent;
 
-    ProfileFormValidation.setInitialState({ inputList: ProfileFormValidation._inputList, formElement: ProfileFormValidation._formElement });
-    openPopup(ProfileFormValidation._formElement);
+    ProfileFormValidation.setInitialState();
+    openPopup(ProfileFormValidation._popupWindow);
 }
 
 function openNewCardPopup() {
     cardAddForm.reset();
 
-    AddCardFormValidation.setInitialState({ formElement: AddCardFormValidation._formElement });
-    openPopup(AddCardFormValidation._formElement);
+    AddCardFormValidation.setInitialState();
+    openPopup(AddCardFormValidation._popupWindow);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -37,7 +37,7 @@ function handleProfileFormSubmit(evt) {
     nameCurrent.textContent = nameInput.value;
     descriptionCurrent.textContent = descriptionInput.value;
 
-    closePopup(ProfileFormValidation._formElement);
+    closePopup(ProfileFormValidation._popupWindow);
 }
 
 function handleCardAddFormSubmit(evt) {
@@ -45,7 +45,7 @@ function handleCardAddFormSubmit(evt) {
 
     createCard({ name: cardNameInput.value, source: cardSourceInput.value });
 
-    closePopup(AddCardFormValidation._formElement);
+    closePopup(AddCardFormValidation._popupWindow);
 }
 
 defaultCards.forEach((cards) => {

@@ -1,0 +1,20 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "<h1>Проектная работа #7 - Mesto</h1>\r <h2>Описание</h2>\r <p><a href=\"https://untitled-dream.github.io/mesto/index.html\">Mesto</a> - типовой одностраничный сайт, созданные в процессе обучения на курсе Вэб-разработчик сервиса онлайн-образования Яндекс.Практикум.</p>\r <h2>Функционал</h2>\r <ul>\r   <li>Просмотр изображений</li>\r   <li>Добавление нового контента</li>\r   <li>Удаление контента</li>\r </ul>\r <h2>Технологии</h2>\r <ul>\r   <li>Flexbox</li>\r   <li>Grid-layout</li>\r   <li>Адаптивная верстка</li>\r   <li>BEM Methodology (File Structure and File Paths - Nested)</li>\r   <li>JavaScript</li>\r </ul>\r <h2>Доработка проекта</h2>\r <ul>\r   <li>Редактирование фотографии профиля</li>\r   <li>Смена языка</li>\r   <li>Сборка проекта средствами WordPack</li>\r </ul>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/untitled-dream/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/untitled-dream/mesto/issues"
+  },
+  "homepage": "https://github.com/untitled-dream/mesto#readme"
+}
