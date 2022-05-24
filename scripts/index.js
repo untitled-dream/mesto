@@ -26,9 +26,9 @@ defaultCards.forEach((cards) => {
 })
 
 function createCard(cardData) {
-    const card = new Card(cardData, templateSelector, () => imageViewPopup.open());
     const imageViewPopup = new PopupWithImage(cardViewPopupElement, cardData);
-
+    const card = new Card(cardData, templateSelector, () => imageViewPopup.open());
+    
     const cardElement = card.getCard();
     card.renderCard(cardElement);
 }
