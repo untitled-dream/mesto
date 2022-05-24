@@ -26,9 +26,6 @@ export const defaultCards = [
 ];
 
 export const templateSelector = "#card-template";
-export const imageViewPopup = document.querySelector("#card-view");
-export const cardCaption = imageViewPopup.querySelector("#card-caption");
-export const cardImage = imageViewPopup.querySelector("#card-image");
 
 export const formObject = {
     fieldsetSelector: ".form__fieldset",
@@ -39,5 +36,6 @@ export const formObject = {
     errorClass: "form__input-error_active"
 }
 
-export const profilePopup = document.querySelector("#profile-edit");
-export const cardAddPopup = document.querySelector("#card-add");
+export const profilePopupElement = document.querySelector("#profile-edit");
+export const cardAddPopupElement = document.querySelector("#card-add");
+export const cardViewPopupElement = document.querySelector("#card-view"); 

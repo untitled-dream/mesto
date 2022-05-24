@@ -1,17 +1,54 @@
 import { Card } from "./Card.js";
-import { openPopup, closePopup } from "./utils.js"
-import { ProfileFormValidation, AddCardFormValidation } from "./FormValidator.js";
-import { profilePopup, cardAddPopup, templateSelector, defaultCards } from "./constants.js"
+import { Popup } from "./Popup.js";
+import { FormValidator} from "./FormValidator.js"
+import { PopupWithImage } from "./PopupWithImage.js";
+
+import {
+    templateSelector,
+    defaultCards,
+    formObject,
+    profilePopupElement,
+    cardAddPopupElement,
+    cardViewPopupElement
+} from "./constants.js"
+
+const profilePopup = new Popup(profilePopupElement);
+const newCardPopup = new Popup(cardAddPopupElement);
+
+const ProfileFormValidation = new FormValidator(formObject, profilePopupElement);
+ProfileFormValidation.enableValidation();
+
+const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement);
+AddCardFormValidation.enableValidation();
+
+defaultCards.forEach((cards) => {
+    createCard(cards);
+})
+
+function createCard(cardData) {
+    const card = new Card(cardData, templateSelector, () => imageViewPopup.open());
+    const imageViewPopup = new PopupWithImage(cardViewPopupElement, cardData);
+
+    const cardElement = card.getCard();
+    card.renderCard(cardElement);
+}
+
+/* -------------------------------------------------------- */
 
 const profileForm = document.forms["profile-edit-form"];
-const profileFormButton = document.querySelector(".profile__button-edit");
-const nameInput = profilePopup.querySelector("#profile-name");
-const descriptionInput = profilePopup.querySelector("#profile-description");
-
 const cardAddForm = document.forms["card-add-form"];
+
+// Open Popup Button
+const profileFormButton = document.querySelector(".profile__button-edit");
 const cardNewFormButton = document.querySelector(".profile__button-add");
-const cardNameInput = cardAddPopup.querySelector("#card-name");
-const cardSourceInput = cardAddPopup.querySelector("#card-source");
+
+// Inputs
+const nameInput = profilePopupElement.querySelector("#profile-name");
+const descriptionInput = profilePopupElement.querySelector("#profile-description");
+
+const cardNameInput = cardAddPopupElement.querySelector("#card-name");
+const cardSourceInput = cardAddPopupElement.querySelector("#card-source");
+
 
 const nameCurrent = document.querySelector(".profile__name");
 const descriptionCurrent = document.querySelector(".profile__description");
@@ -19,16 +56,16 @@ const descriptionCurrent = document.querySelector(".profile__description");
 function openProfilePopup() {
     nameInput.value = nameCurrent.textContent;
     descriptionInput.value = descriptionCurrent.textContent;
-
+    
     ProfileFormValidation.setInitialState();
-    openPopup(ProfileFormValidation._popupWindow);
+    profilePopup.open();
 }
 
 function openNewCardPopup() {
     cardAddForm.reset();
 
     AddCardFormValidation.setInitialState();
-    openPopup(AddCardFormValidation._popupWindow);
+    newCardPopup.open();
 }
 
 function handleProfileFormSubmit(evt) {
@@ -37,7 +74,7 @@ function handleProfileFormSubmit(evt) {
     nameCurrent.textContent = nameInput.value;
     descriptionCurrent.textContent = descriptionInput.value;
 
-    closePopup(ProfileFormValidation._popupWindow);
+    profilePopup.close();
 }
 
 function handleCardAddFormSubmit(evt) {
@@ -45,22 +82,8 @@ function handleCardAddFormSubmit(evt) {
 
     createCard({ name: cardNameInput.value, source: cardSourceInput.value });
 
-    closePopup(AddCardFormValidation._popupWindow);
+    newCardPopup.close();
 }
-
-defaultCards.forEach((cards) => {
-    createCard(cards);
-})
-
-function createCard(cardData) {
-    const card = new Card(cardData, templateSelector);
-    const cardElement = card.getCard();
-    card.renderCard(cardElement);
-}
-
-document.querySelectorAll(".popup__button-close").forEach(closeButton =>
-    closeButton.addEventListener("click", () => closePopup(closeButton.closest(".popup")))
-)
 
 profileFormButton.addEventListener("click", () => openProfilePopup());
 cardNewFormButton.addEventListener("click", () => openNewCardPopup());

@@ -1,4 +1,4 @@
-export function openPopup(popup) {
+/*export function openPopup(popup) {
     popup.classList.add("popup_opened");
 
     popup.addEventListener("mousedown", handleOverlayClose);
@@ -29,4 +29,4 @@ function handleModalEscapePress(evt) {
 
 document.querySelectorAll(".popup__button-close").forEach(closeButton =>
     closeButton.addEventListener("click", () => closePopup(closeButton.closest(".popup")))
-)
+)*/

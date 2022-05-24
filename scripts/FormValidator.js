@@ -1,6 +1,4 @@
-import { profilePopup, cardAddPopup, formObject } from "./constants.js"
-
-class FormValidator {
+export class FormValidator {
     constructor({ fieldsetSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass }, popupWindow) {
         this._formFieldset = fieldsetSelector;
         this._inputSelector = inputSelector;
@@ -79,11 +77,3 @@ class FormValidator {
         });
     }
 }
-
-const ProfileFormValidation = new FormValidator(formObject, profilePopup);
-ProfileFormValidation.enableValidation();
-
-const AddCardFormValidation = new FormValidator(formObject, cardAddPopup);
-AddCardFormValidation.enableValidation();
-
-export { ProfileFormValidation, AddCardFormValidation }

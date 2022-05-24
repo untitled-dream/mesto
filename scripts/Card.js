@@ -1,11 +1,9 @@
-import { openPopup } from "./utils.js"
-import { imageViewPopup, cardCaption, cardImage } from "./constants.js"
-
 class Card {
-    constructor({name, source}, cardsTemplateSelector) {
+    constructor({ name, source }, cardsTemplateSelector, handleCardClick) {
         this._name = name;
         this._source = source;
         this._cardsTemplateSelector = cardsTemplateSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -41,7 +39,7 @@ class Card {
         });
 
         image.addEventListener("click", () => {
-            this._openImagePopup(imageViewPopup)
+            this._handleCardClick();
         })
 
         trashButton.addEventListener("click", () => {
@@ -55,13 +53,6 @@ class Card {
 
     _handleCardDeleteClick() {
         this._element.remove();
-    }
-
-    _openImagePopup(imageViewPopup) {
-        cardCaption.textContent = this._name;
-        cardImage.src = this._source;
-        cardImage.alt = this._name;
-        openPopup(imageViewPopup);
     }
 }
 
