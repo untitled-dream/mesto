@@ -30,8 +30,6 @@ export default class PopupWithForm extends Popup {
         this._inputList.forEach(input => {
             this._formValues[input.name] = input.value;
         })
-
-        return this._formValues;
     }
 
     generate() {

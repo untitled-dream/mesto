@@ -90,4 +90,4 @@ const addForm = new PopupWithForm(cardAddPopupElement,
     } 
 );
 
-addForm.generate();
+addForm.generate()
