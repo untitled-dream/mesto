@@ -85,17 +85,9 @@ profileForm.addEventListener("submit", (evt) => {
 
 const addForm = new PopupWithForm(cardAddPopupElement,
     () => {
-        //createCard(addForm.generate());
+        createCard(addForm.generate());
         addForm.close();
     } 
 );
 
-
-
-/*cardAddForm.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-
-    createCard({ name: cardNameInput.value, source: cardSourceInput.value });
-
-    newCardPopup.close();
-});*/
+addForm.generate();
