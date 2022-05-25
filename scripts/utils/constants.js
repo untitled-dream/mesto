@@ -25,9 +25,6 @@ export const defaultCardsArray = [
     }
 ];
 
-export const templateSelector = "#card-template";
-export const cardsListSelector =".elements__list";
-
 export const formObject = {
     fieldsetSelector: ".form__fieldset",
     inputSelector: ".form__input",
@@ -37,6 +34,23 @@ export const formObject = {
     errorClass: "form__input-error_active"
 }
 
+export const userDataSelector = {
+    userNameSelector: ".profile__name",
+    userDescSelector: ".profile__description"
+}
+
+export const profileForm = document.forms["profile-edit-form"];
+export const cardAddForm = document.forms["card-add-form"];
+
+export const templateSelector = "#card-template";
+export const cardsListSelector =".elements__list";
+
 export const profilePopupElement = document.querySelector("#profile-edit");
 export const cardAddPopupElement = document.querySelector("#card-add");
-export const cardViewPopupElement = document.querySelector("#card-view"); 
+export const cardViewPopupElement = document.querySelector("#card-view");
+
+export const profileNameInput = profilePopupElement.querySelector("#profile-name");
+export const profileDescInput = profilePopupElement.querySelector("#profile-description");
+
+export const cardNameInput = cardAddPopupElement.querySelector("#card-name");
+export const cardSourceInput = cardAddPopupElement.querySelector("#card-source");

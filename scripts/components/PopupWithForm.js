@@ -1,32 +1,33 @@
-import { Popup } from "./Popup.js";
+import Popup from "./Popup.js";
+import { cardAddForm } from "../utils/constants.js"
 
 export default class PopupWithForm extends Popup {
-    constructor({popup, handleFormSubmit}) {
+    constructor(popup, handleFormSubmit) {
         super(popup);
         this._handleFormSubmit = handleFormSubmit;
+        this._form = cardAddForm;
     }
 
-    setEventListeners() {
-        this._element.addEventListener("submit", (evt) => {
+    _setEventListeners() {
+        this._form.addEventListener("submit", (evt) => {
             evt.preventDefault();
             this._handleFormSubmit(this._getInputValues());
-
-            this._element.reset();
         })
 
         super.setEventListeners();
     }
 
     close() {
-
+        //this._form.reset();
+        console.log("123");
         super.close();
     }
 
     _getInputValues() {
-        this._inputList = this._element.querySelectorAll(".form__input");
-        
-        this._formValues = {};
+        this._inputList = this._popup.querySelectorAll(".form__input");
 
+        this._formValues = {};
+        
         this._inputList.forEach(input => {
             this._formValues[input.name] = input.value;
         })
@@ -35,9 +36,7 @@ export default class PopupWithForm extends Popup {
     }
 
     generate() {
-        this._element = this._getElement();
         this._setEventListeners();
-
-        return this._element;
+        return this._formValues;
     }
 }
