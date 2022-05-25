@@ -38,6 +38,7 @@ defaultCardsArray.forEach((defaultCardData) => {
 })
 
 function createCard(data) {
+    console.log(data);
     const newCard = new Section({
         item: data,
         renderer: () => {
@@ -85,9 +86,10 @@ profileForm.addEventListener("submit", (evt) => {
 
 const addForm = new PopupWithForm(cardAddPopupElement,
     () => {
-        createCard(addForm.generate());
+        
+        //createCard(addForm.generate());
         addForm.close();
     } 
 );
 
-addForm.generate()
+createCard(addForm.generate())
