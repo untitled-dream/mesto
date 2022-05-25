@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
     constructor({ name, source }, cardsTemplateSelector, handleCardClick) {
         this._name = name;
         this._source = source;
@@ -8,11 +8,6 @@ class Card {
 
     _getTemplate() {
         return document.querySelector(this._cardsTemplateSelector).content.querySelector(".elements__card").cloneNode(true);
-    }
-
-    renderCard(cardElement) {
-        const cardsList = document.querySelector(".elements__list");
-        cardsList.prepend(cardElement);
     }
 
     getCard() {
@@ -55,5 +50,3 @@ class Card {
         this._element.remove();
     }
 }
-
-export { Card }

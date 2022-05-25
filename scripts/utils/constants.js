@@ -1,4 +1,4 @@
-export const defaultCards = [
+export const defaultCardsArray = [
     {
         name: "Казанский кремль",
         source: "./images/photo-grid-kazan.jpg"
@@ -26,6 +26,7 @@ export const defaultCards = [
 ];
 
 export const templateSelector = "#card-template";
+export const cardsListSelector =".elements__list";
 
 export const formObject = {
     fieldsetSelector: ".form__fieldset",
