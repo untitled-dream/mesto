@@ -33,9 +33,9 @@ const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement)
 AddCardFormValidation.enableValidation();
 ProfileFormValidation.enableValidation();
 
-defaultCardsArray.forEach((defaultCardData) => {
+/*defaultCardsArray.forEach((defaultCardData) => {
     createCard(defaultCardData);
-})
+})*/
 
 function createCard(data) {
     console.log(data);
@@ -86,10 +86,9 @@ profileForm.addEventListener("submit", (evt) => {
 
 const addForm = new PopupWithForm(cardAddPopupElement,
     () => {
-        
         //createCard(addForm.generate());
         addForm.close();
     } 
 );
 
-createCard(addForm.generate())
+createCard(console.log(addForm.generate()))
