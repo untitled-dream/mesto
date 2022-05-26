@@ -23,8 +23,9 @@ const userData = new UserInfo({
     userDescSelector: ".profile__description"
 });
 
-const profilePopup = new Popup("#profile-edit");
 const newCardPopup = new Popup("#card-add");
+const profilePopup = new Popup("#profile-edit");
+const imageViewPopup = new PopupWithImage("#card-view");
 
 const ProfileFormValidation = new FormValidator(formObject, profilePopupElement);
 const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement);
@@ -32,23 +33,23 @@ const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement)
 ProfileFormValidation.enableValidation();
 AddCardFormValidation.enableValidation();
 
+function createCard(data) {
+    const card = new Card(data, cardTemplateSelector, () => imageViewPopup.open(data));
+    const cardElement = card.getCard();
+    cardList.addItemOnPage(cardElement);
+}
+
 const cardList = new Section({
     items: defaultCardsArray,
     renderer: (data) => {
-        const imageViewPopup = new PopupWithImage("#card-view", data);
-        const card = new Card(data, cardTemplateSelector, () => imageViewPopup.open());
-        const cardElement = card.getCard();
-        cardList.addItemOnPage(cardElement);
+        createCard(data);
     }
 }, cardsListSelector);
 
 const addNewCard = new PopupWithForm({
     popupSelector: "#card-add",
     handleFormSubmit: (data) => {
-        const imageViewPopup = new PopupWithImage("#card-view", data);
-        const card = new Card(data, cardTemplateSelector, () => imageViewPopup.open());
-        const cardElement = card.getCard();
-        cardList.addItemOnPage(cardElement);
+        createCard(data);
         addNewCard.close();
     }
 });
@@ -63,6 +64,7 @@ profileFormButton.addEventListener("click", () => {
     profileDescInput.value = userDataAnswer.description;
 
     ProfileFormValidation.setInitialState();
+    
     profilePopup.open();
 });
 
@@ -71,9 +73,7 @@ cardNewFormButton.addEventListener("click", () => {
     newCardPopup.open();
 });
 
-profilePopupElement.querySelector("#profile-edit-form").addEventListener("submit", (evt) => {
-    evt.preventDefault();
-
+profilePopupElement.querySelector("#profile-edit-form").addEventListener("submit", () => {
     userData.setUserInfo({
         name: profileNameInput.value,
         description: profileDescInput.value

@@ -8,17 +8,17 @@ export default class PopupWithForm extends Popup {
     }
 
     _setEventListeners() {
-        this._form.addEventListener("submit", (evt) => {
-            evt.preventDefault();
+        super._setEventListeners();
+
+        this._form.addEventListener("submit", () => {
             this._handleFormSubmit(this._getInputValues());
         })
-
-        super.setEventListeners();
     }
 
     close() {
-        this._form.reset();
         super.close();
+
+        this._form.reset();
     }
 
     _getInputValues() {
@@ -34,6 +34,6 @@ export default class PopupWithForm extends Popup {
     }
 
     generateCard() {
-        this._setEventListeners()
+        this._setEventListeners();
     }
 }

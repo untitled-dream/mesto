@@ -12,6 +12,7 @@ export default class Card {
 
     getCard() {
         this._element = this._getTemplate();
+
         const cardElementSelector = {
             image: this._element.querySelector(".elements__image"),
             title: this._element.querySelector(".elements__title"),
@@ -29,24 +30,12 @@ export default class Card {
     }
 
     _setEventListeners = ({ likeButton, image, trashButton }) => {
-        likeButton.addEventListener('click', () => {
-            this._handleLikeClick(likeButton);
-        });
-
-        image.addEventListener("click", () => {
-            this._handleCardClick();
-        })
-
-        trashButton.addEventListener("click", () => {
-            this._handleCardDeleteClick();
-        });
+        image.addEventListener("click", () => this._handleCardClick());
+        trashButton.addEventListener("click", () => this._handleCardDeleteClick());
+        likeButton.addEventListener('click', () => this._handleLikeClick(likeButton)); 
     }
 
-    _handleLikeClick(likeButton) {
-        likeButton.classList.toggle("elements__button-like_active");
-    }
+    _handleLikeClick = (likeButton) => likeButton.classList.toggle("elements__button-like_active");
 
-    _handleCardDeleteClick() {
-        this._element.remove();
-    }
+    _handleCardDeleteClick = () => this._element.remove();
 }

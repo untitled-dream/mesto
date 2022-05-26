@@ -6,9 +6,7 @@ export default class Section {
     }
 
     rendererItems() {
-        this._cardData.forEach(element => {
-            this._renderer(element);
-        });
+        this._cardData.forEach(element => this._renderer(element));
     }
 
     addItemOnPage(cardElement) {
