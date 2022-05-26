@@ -3,26 +3,25 @@ import Popup from "../scripts/components/Popup.js";
 import Section from "../scripts/components/Section.js";
 import UserInfo from "../scripts/components/UserInfo.js";
 import FormValidator from "../scripts/components/FormValidator.js"
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import {
     formObject,
-    profileForm,
-    cardAddForm,
-    userDataSelector,
-    templateSelector,
+    cardTemplateSelector,
     defaultCardsArray,
     profilePopupElement,
     cardAddPopupElement,
-    cardViewPopupElement,
     cardsListSelector,
     profileNameInput,
     profileDescInput,
-    cardNameInput,
-    cardSourceInput
+    profileFormButton,
+    cardNewFormButton
 } from "../scripts/utils/constants.js"
-import PopupWithForm from "../scripts/components/PopupWithForm.js";
 
-const userData = new UserInfo(userDataSelector);
+const userData = new UserInfo({
+    userNameSelector: ".profile__name",
+    userDescSelector: ".profile__description"
+});
 
 const profilePopup = new Popup("#profile-edit");
 const newCardPopup = new Popup("#card-add");
@@ -30,29 +29,34 @@ const newCardPopup = new Popup("#card-add");
 const ProfileFormValidation = new FormValidator(formObject, profilePopupElement);
 const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement);
 
-AddCardFormValidation.enableValidation();
 ProfileFormValidation.enableValidation();
+AddCardFormValidation.enableValidation();
 
-defaultCardsArray.forEach((defaultCardData) => {
-    createCard(defaultCardData);
-})
+const cardList = new Section({
+    items: defaultCardsArray,
+    renderer: (data) => {
+        const imageViewPopup = new PopupWithImage("#card-view", data);
+        const card = new Card(data, cardTemplateSelector, () => imageViewPopup.open());
+        const cardElement = card.getCard();
+        cardList.addItemOnPage(cardElement);
+    }
+}, cardsListSelector);
 
-function createCard(data) {
-    const newCard = new Section({
-        item: data,
-        renderer: () => {
-            const imageViewPopup = new PopupWithImage("#card-view", data);
-            const card = new Card(data, templateSelector, () => imageViewPopup.open());
-            const cardElement = card.getCard();
-            newCard.addItemOnPage(cardElement);
-        }
-    }, cardsListSelector);
-    newCard.renderer();
-}
+const addNewCard = new PopupWithForm({
+    popupSelector: "#card-add",
+    handleFormSubmit: (data) => {
+        const imageViewPopup = new PopupWithImage("#card-view", data);
+        const card = new Card(data, cardTemplateSelector, () => imageViewPopup.open());
+        const cardElement = card.getCard();
+        cardList.addItemOnPage(cardElement);
+        addNewCard.close();
+    }
+});
 
-const profileFormButton = document.querySelector(".profile__button-edit");
+addNewCard.generateCard();
+cardList.rendererItems();
+
 profileFormButton.addEventListener("click", () => {
-    
     const userDataAnswer = userData.getUserInfo();
 
     profileNameInput.value = userDataAnswer.name;
@@ -62,29 +66,18 @@ profileFormButton.addEventListener("click", () => {
     profilePopup.open();
 });
 
-const cardNewFormButton = document.querySelector(".profile__button-add");
 cardNewFormButton.addEventListener("click", () => {
-    cardAddForm.reset();
-
     AddCardFormValidation.setInitialState();
     newCardPopup.open();
 });
 
-profileForm.addEventListener("submit", (evt) => {
+profilePopupElement.querySelector("#profile-edit-form").addEventListener("submit", (evt) => {
     evt.preventDefault();
 
-    const newUserData = {
+    userData.setUserInfo({
         name: profileNameInput.value,
         description: profileDescInput.value
-    }
-
-    userData.setUserInfo(newUserData);
+    });
 
     profilePopup.close();
-});
-
-const addForm = new PopupWithForm({
-    popupSelector: "#card-add",
-    handleFormSubmit: () => {
-    } 
 });

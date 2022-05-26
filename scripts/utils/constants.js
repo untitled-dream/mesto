@@ -34,15 +34,7 @@ export const formObject = {
     errorClass: "form__input-error_active"
 }
 
-export const userDataSelector = {
-    userNameSelector: ".profile__name",
-    userDescSelector: ".profile__description"
-}
-
-export const profileForm = document.forms["profile-edit-form"];
-export const cardAddForm = document.forms["card-add-form"];
-
-export const templateSelector = "#card-template";
+export const cardTemplateSelector = "#card-template";
 export const cardsListSelector =".elements__list";
 
 export const profilePopupElement = document.querySelector("#profile-edit");
@@ -54,3 +46,6 @@ export const profileDescInput = profilePopupElement.querySelector("#profile-desc
 
 export const cardNameInput = cardAddPopupElement.querySelector("#name");
 export const cardSourceInput = cardAddPopupElement.querySelector("#source");
+
+export const profileFormButton = document.querySelector(".profile__button-edit");
+export const cardNewFormButton = document.querySelector(".profile__button-add");
