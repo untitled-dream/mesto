@@ -24,8 +24,8 @@ import PopupWithForm from "../scripts/components/PopupWithForm.js";
 
 const userData = new UserInfo(userDataSelector);
 
-const profilePopup = new Popup(profilePopupElement);
-const newCardPopup = new Popup(cardAddPopupElement);
+const profilePopup = new Popup("#profile-edit");
+const newCardPopup = new Popup("#card-add");
 
 const ProfileFormValidation = new FormValidator(formObject, profilePopupElement);
 const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement);
@@ -33,16 +33,15 @@ const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement)
 AddCardFormValidation.enableValidation();
 ProfileFormValidation.enableValidation();
 
-/*defaultCardsArray.forEach((defaultCardData) => {
+defaultCardsArray.forEach((defaultCardData) => {
     createCard(defaultCardData);
-})*/
+})
 
 function createCard(data) {
-    console.log(data);
     const newCard = new Section({
         item: data,
         renderer: () => {
-            const imageViewPopup = new PopupWithImage(cardViewPopupElement, data);
+            const imageViewPopup = new PopupWithImage("#card-view", data);
             const card = new Card(data, templateSelector, () => imageViewPopup.open());
             const cardElement = card.getCard();
             newCard.addItemOnPage(cardElement);
@@ -84,11 +83,8 @@ profileForm.addEventListener("submit", (evt) => {
     profilePopup.close();
 });
 
-const addForm = new PopupWithForm(cardAddPopupElement,
-    () => {
-        //createCard(addForm.generate());
-        addForm.close();
+const addForm = new PopupWithForm({
+    popupSelector: "#card-add",
+    handleFormSubmit: () => {
     } 
-);
-
-createCard(console.log(addForm.generate()))
+});
