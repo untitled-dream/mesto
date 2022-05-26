@@ -14,10 +14,10 @@
   <li>Адаптивная верстка</li>
   <li>BEM Methodology (File Structure and File Paths - Nested)</li>
   <li>JavaScript</li>
+  <li>Webpack</li>
 </ul>
 <h2>Доработка проекта</h2>
 <ul>
   <li>Редактирование фотографии профиля</li>
   <li>Смена языка</li>
-  <li>Сборка проекта средствами WordPack</li>
 </ul>
