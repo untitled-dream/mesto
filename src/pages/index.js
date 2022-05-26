@@ -1,12 +1,12 @@
 import "./index.css";
 
-import Card from "../scripts/components/Card.js";
-import Popup from "../scripts/components/Popup.js";
-import Section from "../scripts/components/Section.js";
-import UserInfo from "../scripts/components/UserInfo.js";
-import FormValidator from "../scripts/components/FormValidator.js"
-import PopupWithForm from "../scripts/components/PopupWithForm.js";
-import PopupWithImage from "../scripts/components/PopupWithImage.js";
+import Card from "../components/Card.js";
+import Popup from "../components/Popup.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import FormValidator from "../components/FormValidator.js"
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import {
     formObject,
     cardTemplateSelector,
@@ -18,7 +18,7 @@ import {
     profileDescInput,
     profileFormButton,
     cardNewFormButton
-} from "../scripts/utils/constants.js"
+} from "../utils/constants.js"
 
 const userData = new UserInfo({
     userNameSelector: ".profile__name",
@@ -28,6 +28,9 @@ const userData = new UserInfo({
 const newCardPopup = new Popup("#card-add");
 const profilePopup = new Popup("#profile-edit");
 const imageViewPopup = new PopupWithImage("#card-view");
+
+profilePopup.setEventListeners();
+imageViewPopup.setEventListeners();
 
 const ProfileFormValidation = new FormValidator(formObject, profilePopupElement);
 const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement);
@@ -66,8 +69,8 @@ profileFormButton.addEventListener("click", () => {
     profileDescInput.value = userDataAnswer.description;
 
     ProfileFormValidation.setInitialState();
-    
     profilePopup.open();
+    
 });
 
 cardNewFormButton.addEventListener("click", () => {

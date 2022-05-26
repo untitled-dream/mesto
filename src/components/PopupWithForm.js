@@ -7,8 +7,8 @@ export default class PopupWithForm extends Popup {
         this._form = this._popup.querySelector("#card-add-form");
     }
 
-    _setEventListeners() {
-        super._setEventListeners();
+    setEventListeners() {
+        super.setEventListeners();
 
         this._form.addEventListener("submit", () => {
             this._handleFormSubmit(this._getInputValues());
@@ -34,6 +34,6 @@ export default class PopupWithForm extends Popup {
     }
 
     generateCard() {
-        this._setEventListeners();
+        this.setEventListeners();
     }
 }
