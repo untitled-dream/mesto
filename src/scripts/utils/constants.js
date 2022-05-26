@@ -1,27 +1,27 @@
 export const defaultCardsArray = [
     {
         name: "Казанский кремль",
-        source: "./images/photo-grid-kazan.jpg"
+        source: new URL("../../images/photo-grid-kazan.jpg", import.meta.url)
     },
     {
         name: "МГУ, Москва",
-        source: "./images/photo-grid-moscow-2.jpg"
+        source: new URL("../../images/photo-grid-moscow-2.jpg", import.meta.url)
     },
     {
         name: "о. Эгина, Греция",
-        source: "./images/photo-grid-aegina.jpg"
+        source: new URL("../../images/photo-grid-aegina.jpg", import.meta.url)
     },
     {
         name: "Куршская Коса",
-        source: "./images/photo-grid-kurshskaya-kosa.jpg"
+        source: new URL("../../images/photo-grid-kurshskaya-kosa.jpg", import.meta.url)
     },
     {
         name: "Москва",
-        source: "./images/photo-grid-moscow-1.jpg"
+        source: new URL("../../images/photo-grid-moscow-1.jpg", import.meta.url)
     },
     {
         name: "Афины",
-        source: "./images/photo-grid-athens.jpg"
+        source: new URL("../../images/photo-grid-athens.jpg", import.meta.url)
     }
 ];
 
