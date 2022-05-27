@@ -1,26 +1,26 @@
 export const defaultCardsArray = [
     {
-        name: "Казанский кремль",
+        place: "Казанский кремль",
         source: new URL("../images/photo-grid-kazan.jpg", import.meta.url)
     },
     {
-        name: "МГУ, Москва",
+        place: "МГУ, Москва",
         source: new URL("../images/photo-grid-moscow-2.jpg", import.meta.url)
     },
     {
-        name: "о. Эгина, Греция",
+        place: "о. Эгина, Греция",
         source: new URL("../images/photo-grid-aegina.jpg", import.meta.url)
     },
     {
-        name: "Куршская Коса",
+        place: "Куршская Коса",
         source: new URL("../images/photo-grid-kurshskaya-kosa.jpg", import.meta.url)
     },
     {
-        name: "Москва",
+        place: "Москва",
         source: new URL("../images/photo-grid-moscow-1.jpg", import.meta.url)
     },
     {
-        name: "Афины",
+        place: "Афины",
         source: new URL("../images/photo-grid-athens.jpg", import.meta.url)
     }
 ];
@@ -44,7 +44,7 @@ export const cardViewPopupElement = document.querySelector("#card-view");
 export const profileNameInput = profilePopupElement.querySelector("#name");
 export const profileDescInput = profilePopupElement.querySelector("#description");
 
-export const cardNameInput = cardAddPopupElement.querySelector("#name");
+export const cardNameInput = cardAddPopupElement.querySelector("#card-name");
 export const cardSourceInput = cardAddPopupElement.querySelector("#source");
 
 export const profileFormButton = document.querySelector(".profile__button-edit");
