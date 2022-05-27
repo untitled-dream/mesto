@@ -1,7 +1,5 @@
 import "./index.css";
-
 import Card from "../components/Card.js";
-import Popup from "../components/Popup.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js"
@@ -25,11 +23,7 @@ const userData = new UserInfo({
     userDescSelector: ".profile__description"
 });
 
-const newCardPopup = new Popup("#card-add");
-const profilePopup = new Popup("#profile-edit");
 const imageViewPopup = new PopupWithImage("#card-view");
-
-profilePopup.setEventListeners();
 imageViewPopup.setEventListeners();
 
 const ProfileFormValidation = new FormValidator(formObject, profilePopupElement);
@@ -51,15 +45,25 @@ const cardList = new Section({
     }
 }, cardsListSelector);
 
-const addNewCard = new PopupWithForm({
-    popupSelector: "#card-add",
+const profilePopup = new PopupWithForm({
+    popupSelector: "#profile-edit",
     handleFormSubmit: (data) => {
-        createCard(data);
-        addNewCard.close();
+        userData.setUserInfo(data);
+        profilePopup.close();
     }
 });
 
-addNewCard.generateCard();
+profilePopup.setEventListeners();
+
+const newCardPopup = new PopupWithForm({
+    popupSelector: "#card-add",
+    handleFormSubmit: (data) => {
+        createCard(data);
+        newCardPopup.close();
+    }
+});
+
+newCardPopup.setEventListeners();
 cardList.rendererItems();
 
 profileFormButton.addEventListener("click", () => {
@@ -76,13 +80,4 @@ profileFormButton.addEventListener("click", () => {
 cardNewFormButton.addEventListener("click", () => {
     AddCardFormValidation.setInitialState();
     newCardPopup.open();
-});
-
-profilePopupElement.querySelector("#profile-edit-form").addEventListener("submit", () => {
-    userData.setUserInfo({
-        name: profileNameInput.value,
-        description: profileDescInput.value
-    });
-
-    profilePopup.close();
 });

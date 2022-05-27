@@ -41,8 +41,8 @@ export const profilePopupElement = document.querySelector("#profile-edit");
 export const cardAddPopupElement = document.querySelector("#card-add");
 export const cardViewPopupElement = document.querySelector("#card-view");
 
-export const profileNameInput = profilePopupElement.querySelector("#profile-name");
-export const profileDescInput = profilePopupElement.querySelector("#profile-description");
+export const profileNameInput = profilePopupElement.querySelector("#name");
+export const profileDescInput = profilePopupElement.querySelector("#description");
 
 export const cardNameInput = cardAddPopupElement.querySelector("#name");
 export const cardSourceInput = cardAddPopupElement.querySelector("#source");
