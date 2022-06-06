@@ -82,16 +82,15 @@
       <figcaption class="popup__caption" id="card-caption"></figcaption>
     </figure>
   </div>
-  <div class="popup" id="confirmation">
+  <div class="popup popup_opened" id="confirmation">
     <div class="popup__container">
-      <form class="form" id="card-add-form" name="card-add-form">
+      <form class="form" id="confirmation-form" name="confirmation-form">
         <fieldset class="form__fieldset">
           <h2 class="form__title">Вы уверены?</h2>
-          <button class="form__button-submit" type="submit"
-            title="Сохранить изменения">Да</button>
+          <button class="form__button-submit" type="submit" title="Подтвердить удаление">Да</button>
         </fieldset>
       </form>
-      <button class="popup__button-close" type="submit" title="Подтвердить"></button>
+      <button class="popup__button-close" type="submit" title="Закрыть форму"></button>
     </div>
   </div>
   <template id="card-template">
