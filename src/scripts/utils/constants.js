@@ -25,6 +25,8 @@ export const defaultCardsArray = [
     }
 ];
 
+console.log(defaultCardsArray.length);
+
 export const formObject = {
     fieldsetSelector: ".form__fieldset",
     inputSelector: ".form__input",
