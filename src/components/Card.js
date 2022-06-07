@@ -1,7 +1,7 @@
 export default class Card {
-    constructor({ place, source }, cardsTemplateSelector, handleCardClick) {
-        this._place = place;
-        this._source = source;
+    constructor({ name, link }, cardsTemplateSelector, handleCardClick) {
+        this._name = name;
+        this._link = link;
         this._cardsTemplateSelector = cardsTemplateSelector;
         this._handleCardClick = handleCardClick;
     }
@@ -10,19 +10,23 @@ export default class Card {
         return document.querySelector(this._cardsTemplateSelector).content.querySelector(".elements__card").cloneNode(true);
     }
 
+    _setLike() {
+
+    }
+
     getCard() {
         this._element = this._getTemplate();
 
         const cardElementSelector = {
             image: this._element.querySelector(".elements__image"),
             title: this._element.querySelector(".elements__title"),
-            likeButton: this._element.querySelector(".elements__button-like"),
-            trashButton: this._element.querySelector(".elements__button-trash")
+            likeButton: this._element.querySelector(".elements__like-button"),
+            trashButton: this._element.querySelector(".elements__trash-button")
         }
 
-        cardElementSelector.image.src = this._source;
-        cardElementSelector.image.alt = this._place;
-        cardElementSelector.title.textContent = this._place;
+        cardElementSelector.image.src = this._link;
+        cardElementSelector.image.alt = this._name;
+        cardElementSelector.title.textContent = this._name;
 
         this._setEventListeners(cardElementSelector);
 
@@ -35,7 +39,7 @@ export default class Card {
         likeButton.addEventListener('click', () => this._handleLikeClick(likeButton)); 
     }
 
-    _handleLikeClick = (likeButton) => likeButton.classList.toggle("elements__button-like_active");
+    _handleLikeClick = (likeButton) => likeButton.classList.toggle("elements__like-button_active");
 
     _handleCardDeleteClick = () => this._element.remove();
 }
