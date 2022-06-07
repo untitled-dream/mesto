@@ -5,7 +5,6 @@ export default class Section {
     }
 
     rendererItems(data) {
-        console.log(data);
         data.forEach(element => this._renderer(element));
     }
 

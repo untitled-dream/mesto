@@ -17,29 +17,27 @@ export default class Card {
     getCard() {
         this._element = this._getTemplate();
 
-        const cardElementSelector = {
-            image: this._element.querySelector(".elements__image"),
-            title: this._element.querySelector(".elements__title"),
-            likeButton: this._element.querySelector(".elements__like-button"),
-            trashButton: this._element.querySelector(".elements__trash-button")
-        }
+        this._image = this._element.querySelector(".elements__image");
+        this._title = this._element.querySelector(".elements__title");
+        this._likeButton = this._element.querySelector(".elements__like-button");
+        this._trashButton = this._element.querySelector(".elements__trash-button");
 
-        cardElementSelector.image.src = this._link;
-        cardElementSelector.image.alt = this._name;
-        cardElementSelector.title.textContent = this._name;
+        this._image.src = this._link;
+        this._image.alt = this._name;
+        this._title.textContent = this._name;
 
-        this._setEventListeners(cardElementSelector);
+        this._setEventListeners();
 
         return this._element;
     }
 
-    _setEventListeners = ({ likeButton, image, trashButton }) => {
-        image.addEventListener("click", () => this._handleCardClick());
-        trashButton.addEventListener("click", () => this._handleCardDeleteClick());
-        likeButton.addEventListener('click', () => this._handleLikeClick(likeButton)); 
+    _setEventListeners = () => {
+        this._image.addEventListener("click", () => this._handleCardClick());
+        this._trashButton.addEventListener("click", () => this._handleCardDeleteClick());
+        this._likeButton.addEventListener('click', () => this._handleLikeClick(this._likeButton)); 
     }
 
-    _handleLikeClick = (likeButton) => likeButton.classList.toggle("elements__like-button_active");
+    _handleLikeClick = () => this._likeButton.classList.toggle("elements__like-button_active");
 
     _handleCardDeleteClick = () => this._element.remove();
 }
