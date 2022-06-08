@@ -13,10 +13,6 @@ export default class FormValidator {
     }
 
     enableValidation() {
-        this._popupWindow.addEventListener("submit", (evt) => {
-            evt.preventDefault();
-        });
-
         this._setEventListeners(this._popupWindow.querySelector(this._formFieldset));
     }
 
