@@ -74,9 +74,9 @@ export default class Card {
 
         this._element.setAttribute("id", `${this._data._id}`);
 
-        this.setLikeCount(this._data)
-        this._checkLikeState();
         this._checkIsOwn();
+        this._checkLikeState();
+        this.setLikeCount(this._data)
         
         this._setEventListeners();
 
