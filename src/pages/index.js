@@ -53,7 +53,6 @@ function createCard(data) {
         handleCardOpenClick: () => imageViewPopup.open(data),
         handleCardDeleteClick: () => {
             ownCard = card;
-            console.log(ownCard);
             cardDeletePopup.open(data)
         },
         setLike: (data) => {
