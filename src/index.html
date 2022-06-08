@@ -16,15 +16,18 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="Фотография пользователя">
+      <div class="profile__avatar-wrapper">
+        <img class="profile__avatar" alt="">
+        <button class="profile__button-avatar open-form" type="button" title="Обновить фотографию"></button>
+      </div>
       <div class="profile__info">
         <div class="profile__container">
-          <h1 class="profile__name">Смирнов Андрей</h1>
-          <button class="profile__button-edit" type="button" title="Редактировать профиль"></button>
+          <h1 class="profile__name"></h1>
+          <button class="profile__button-edit open-form" type="button" title="Редактировать профиль"></button>
         </div>
-        <p class="profile__description">Не исследователь океана</p>
+        <p class="profile__description"></p>
       </div>
-      <button class="profile__button-add" type="button" title="Добавить фотографию"></button>
+      <button class="profile__button-add open-form" type="button" title="Добавить фотографию"></button>
     </section>
     <section class="elements">
       <ul class="elements__list"></ul>
@@ -38,16 +41,18 @@
       <form class="form" id="profile-edit-form" name="profile-edit-form">
         <fieldset class="form__fieldset">
           <h2 class="form__title">Редактировать профиль</h2>
-          <label class="form__field">
-            <input class="form__input" id="name" name="name" minlength="2" maxlength="40"
-              placeholder="Имя" autocomplete="off" required>
-            <span class="form__input-error name-error"></span>
-          </label>
-          <label class="form__field">
-            <input class="form__input" id="description" name="description" minlength="2" maxlength="200"
-              placeholder="О себе" autocomplete="off" required>
-            <span class="form__input-error description-error"></span>
-          </label>
+          <div class="form__input-wrapper">
+            <label class="form__field">
+              <input class="form__input" id="name" name="name" minlength="2" maxlength="40" placeholder="Имя" autocomplete="off"
+                required>
+              <span class="form__input-error name-error"></span>
+            </label>
+            <label class="form__field">
+              <input class="form__input" id="about" name="about" minlength="2" maxlength="200" placeholder="О себе"
+                autocomplete="off" required>
+              <span class="form__input-error about-error"></span>
+            </label>
+          </div>
           <button class="form__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
         </fieldset>
       </form>
@@ -59,15 +64,18 @@
       <form class="form" id="card-add-form" name="card-add-form">
         <fieldset class="form__fieldset">
           <h2 class="form__title">Новое место</h2>
-          <label class="form__field">
-            <input class="form__input" id="place" name="place" minlength="2" maxlength="30" placeholder="Название" autocomplete="off" required>
-            <span class="form__input-error place-error"></span>
-          </label>
-          <label class="form__field">
-            <input class="form__input" id="source" name="source" type="url" placeholder="Ссылка на картинку"
-              autocomplete="off" required>
-            <span class="form__input-error source-error"></span>
-          </label>
+          <div class="form__input-wrapper">
+            <label class="form__field">
+              <input class="form__input" id="name" name="name" minlength="2" maxlength="30" placeholder="Название"
+                autocomplete="off" required>
+              <span class="form__input-error name-error"></span>
+            </label>
+            <label class="form__field">
+              <input class="form__input" id="link" name="link" type="url" placeholder="Ссылка на картинку" autocomplete="off"
+                required>
+              <span class="form__input-error link-error"></span>
+            </label>
+          </div>
           <button class="form__button-submit form__button-submit_disabled" type="submit"
             title="Сохранить изменения">Создать</button>
         </fieldset>
@@ -82,14 +90,46 @@
       <figcaption class="popup__caption" id="card-caption"></figcaption>
     </figure>
   </div>
+  <div class="popup" id="avatar-update">
+    <div class="popup__container">
+      <form class="form" id="avatar-update-form" name="confirmation-form">
+        <fieldset class="form__fieldset">
+          <h2 class="form__title">Обновить аватар</h2>
+          <div class="form__input-wrapper">
+            <label class="form__field">
+              <input class="form__input" id="avatar" name="avatar" type="url" placeholder="Ссылка на фотографию" autocomplete="off"
+                required>
+              <span class="form__input-error avatar-error"></span>
+            </label>
+          </div>
+          <button class="form__button-submit form__button-submit_disabled" type="submit" title="Подтвердить удаление">Да</button>
+        </fieldset>
+      </form>
+      <button class="popup__button-close" type="submit" title="Закрыть форму"></button>
+    </div>
+  </div>
+  <div class="popup" id="card-delete-confirmation">
+    <div class="popup__container">
+      <form class="form" id="confirmation-form" name="confirmation-form">
+        <fieldset class="form__fieldset">
+          <h2 class="form__title">Вы уверены?</h2>
+          <button class="form__button-submit" type="submit" title="Подтвердить удаление">Да</button>
+        </fieldset>
+      </form>
+      <button class="popup__button-close" type="submit" title="Закрыть форму"></button>
+    </div>
+  </div>
   <template id="card-template">
     <li class="elements__card">
       <img class="elements__image">
       <div class="elements__title-wrapper">
         <h2 class="elements__title"></h2>
-        <button class="elements__button-like" type="button" title="Лайк"></button>
+        <div class="elements__like-container">
+          <button class="elements__like-button" type="button" title="Лайк"></button>
+          <span class="elements__like-counter">0</span>
+        </div>
       </div>
-      <button class="elements__button-trash" type="button" title="Удалить запись"></button>
+      <button class="elements__trash-button" type="button" title="Удалить запись"></button>
     </li>
   </template>
 </body>

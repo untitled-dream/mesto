@@ -1,4 +1,4 @@
-.elements__button-trash {
+.elements__trash-button {
     background-color: transparent;
     background-image: url(../../../images/icon-trash.svg);
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
     transition: .5s opacity;
 }
 
-.elements__button-trash:hover {
+.elements__trash-button:hover {
     opacity: .6;
     transition: .5s opacity;
 }

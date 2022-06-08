@@ -4,9 +4,9 @@
     position: relative;
 }
 
-.form__field:first-of-type {
+/*.form__field:first-of-type {
     margin-bottom: 32px;
-}
+}*/
 
 @media screen and (max-width: 620px) {
     .form__field {

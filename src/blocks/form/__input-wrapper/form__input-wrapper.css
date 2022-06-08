@@ -1,0 +1,7 @@
+.form__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 16px;
+    padding-bottom: 48px;
+}
