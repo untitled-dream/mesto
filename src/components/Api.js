@@ -75,7 +75,7 @@ export default class API {
 
     removeCard(data) {
         return fetch(`${this._baseURL}/cards/${data._id}`, {
-            method: 'DELETE',
+            method: "DELETE",
             headers: this._headers
         }).then(this._defaultResponse)
     }

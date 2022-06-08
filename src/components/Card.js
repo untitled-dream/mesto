@@ -90,7 +90,7 @@ export default class Card {
         
         this._deleteCardButton.addEventListener("click", this._handleCardDeleteClick);
         
-        this._likeButton.addEventListener('click', () => {
+        this._likeButton.addEventListener("click", () => {
             if (this._likeButton.classList.contains(this._activeLikeSelector)) {
                 this._dislike(this._data);
             } else {
