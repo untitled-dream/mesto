@@ -16,7 +16,7 @@ export default class FormValidator {
         this._popupWindow.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
-        
+
         this._setEventListeners(this._popupWindow.querySelector(this._formFieldset));
     }
 
@@ -24,7 +24,7 @@ export default class FormValidator {
         this._inputList.forEach((input) => {
             this._hideInputError(input);
         });
-        
+
         this._toggleButtonState();
     }
 
@@ -57,7 +57,7 @@ export default class FormValidator {
 
     _showInputError(inputElement, validationErrorMessage) {
         const errorElement = this._popupWindow.querySelector(`.${inputElement.id}-error`);
-        
+
         inputElement.classList.add(this._inputErrorClass);
         errorElement.textContent = validationErrorMessage;
         errorElement.classList.add(this._errorClass);
@@ -65,7 +65,7 @@ export default class FormValidator {
 
     _hideInputError(inputElement) {
         const errorElement = this._popupWindow.querySelector(`.${inputElement.id}-error`);
-        
+
         inputElement.classList.remove(this._inputErrorClass);
         errorElement.classList.remove(this._errorClass);
         errorElement.textContent = '';

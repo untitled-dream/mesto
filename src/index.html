@@ -18,16 +18,16 @@
     <section class="profile">
       <div class="profile__avatar-wrapper">
         <img class="profile__avatar" alt="">
-        <button class="profile__button-avatar" type="button" title="Обновить фотографию"></button>
+        <button class="profile__button-avatar open-form" type="button" title="Обновить фотографию"></button>
       </div>
       <div class="profile__info">
         <div class="profile__container">
           <h1 class="profile__name"></h1>
-          <button class="profile__button-edit" type="button" title="Редактировать профиль"></button>
+          <button class="profile__button-edit open-form" type="button" title="Редактировать профиль"></button>
         </div>
         <p class="profile__description"></p>
       </div>
-      <button class="profile__button-add" type="button" title="Добавить фотографию"></button>
+      <button class="profile__button-add open-form" type="button" title="Добавить фотографию"></button>
     </section>
     <section class="elements">
       <ul class="elements__list"></ul>
@@ -48,9 +48,9 @@
               <span class="form__input-error name-error"></span>
             </label>
             <label class="form__field">
-              <input class="form__input" id="description" name="description" minlength="2" maxlength="200" placeholder="О себе"
+              <input class="form__input" id="about" name="about" minlength="2" maxlength="200" placeholder="О себе"
                 autocomplete="off" required>
-              <span class="form__input-error description-error"></span>
+              <span class="form__input-error about-error"></span>
             </label>
           </div>
           <button class="form__button-submit" type="submit" title="Сохранить изменения">Сохранить</button>
@@ -66,14 +66,14 @@
           <h2 class="form__title">Новое место</h2>
           <div class="form__input-wrapper">
             <label class="form__field">
-              <input class="form__input" id="place" name="place" minlength="2" maxlength="30" placeholder="Название"
+              <input class="form__input" id="name" name="name" minlength="2" maxlength="30" placeholder="Название"
                 autocomplete="off" required>
-              <span class="form__input-error place-error"></span>
+              <span class="form__input-error name-error"></span>
             </label>
             <label class="form__field">
-              <input class="form__input" id="source" name="source" type="url" placeholder="Ссылка на картинку" autocomplete="off"
+              <input class="form__input" id="link" name="link" type="url" placeholder="Ссылка на картинку" autocomplete="off"
                 required>
-              <span class="form__input-error source-error"></span>
+              <span class="form__input-error link-error"></span>
             </label>
           </div>
           <button class="form__button-submit form__button-submit_disabled" type="submit"
@@ -92,14 +92,14 @@
   </div>
   <div class="popup" id="avatar-update">
     <div class="popup__container">
-      <form class="form" id="confirmation-form" name="confirmation-form">
+      <form class="form" id="avatar-update-form" name="confirmation-form">
         <fieldset class="form__fieldset">
           <h2 class="form__title">Обновить аватар</h2>
           <div class="form__input-wrapper">
             <label class="form__field">
-              <input class="form__input" id="source" name="source" type="url" placeholder="Ссылка на фотографию" autocomplete="off"
+              <input class="form__input" id="avatar" name="avatar" type="url" placeholder="Ссылка на фотографию" autocomplete="off"
                 required>
-              <span class="form__input-error source-error"></span>
+              <span class="form__input-error avatar-error"></span>
             </label>
           </div>
           <button class="form__button-submit form__button-submit_disabled" type="submit" title="Подтвердить удаление">Да</button>
@@ -108,7 +108,7 @@
       <button class="popup__button-close" type="submit" title="Закрыть форму"></button>
     </div>
   </div>
-  <div class="popup" id="confirmation">
+  <div class="popup" id="card-delete-confirmation">
     <div class="popup__container">
       <form class="form" id="confirmation-form" name="confirmation-form">
         <fieldset class="form__fieldset">

@@ -8,7 +8,11 @@ export default class Section {
         data.forEach(element => this._renderer(element));
     }
 
-    addItemOnPage(cardElement) {
-        this._container.prepend(cardElement);
+    addItemOnPage(cardElement, place) {
+        if (place == "prepend") {
+            this._container.prepend(cardElement);
+        } else {
+            this._container.append(cardElement);
+        }   
     }
 }

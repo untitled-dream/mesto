@@ -16,7 +16,7 @@ export const profilePopupElement = document.querySelector("#profile-edit");
 export const profileAvatarPopupElement = document.querySelector("#avatar-update");
 
 export const profileNameInput = profilePopupElement.querySelector("#name");
-export const profileDescInput = profilePopupElement.querySelector("#description");
+export const profileDescInput = profilePopupElement.querySelector("#about");
 
 export const cardNameInput = cardAddPopupElement.querySelector("#card-name");
 export const cardSourceInput = cardAddPopupElement.querySelector("#source");
