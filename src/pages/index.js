@@ -40,13 +40,13 @@ const userData = new UserInfo({
 
 const imageViewPopup = new PopupWithImage("#card-view");
 
-const ProfileFormValidation = new FormValidator(formObject, profilePopupElement);
-const ProfileAvatarFormValidation = new FormValidator(formObject, profileAvatarPopupElement);
-const AddCardFormValidation = new FormValidator(formObject, cardAddPopupElement);
+const profileFormValidation = new FormValidator(formObject, profilePopupElement);
+const profileAvatarFormValidation = new FormValidator(formObject, profileAvatarPopupElement);
+const addCardFormValidation = new FormValidator(formObject, cardAddPopupElement);
 
-ProfileFormValidation.enableValidation();
-ProfileAvatarFormValidation.enableValidation();
-AddCardFormValidation.enableValidation();
+profileFormValidation.enableValidation();
+profileAvatarFormValidation.enableValidation();
+addCardFormValidation.enableValidation();
 
 function createCard(data) {
     const card = new Card(data, ownerID, cardTemplateSelector, { 
@@ -74,7 +74,7 @@ const cardList = new Section({
         const card = createCard(data);
         const cardElement = card.getCard();
         card.setLikeCount(data);
-        cardList.addItemOnPage(cardElement, "prepend");
+        cardList.addItemOnPage(cardElement, "append");
     }
 }, cardsListSelector);
 
@@ -94,11 +94,11 @@ const profilePopup = new PopupWithForm({
         api.setUserData(data)
             .then((res) => {
                 userData.setUserInfo(res);
+                profilePopup.close();
             })
             .catch(err => console.log(err))
             .finally(() => {
                 profilePopup.isLoading(false);
-                profilePopup.close();
             })
     }
 });
@@ -110,13 +110,13 @@ const profileAvatarPopup = new PopupWithForm({
         api.setUserAvatar(data)
             .then((res) => {
                 userData.setUserAvatar(res);
+                profileAvatarPopup.close();
             })
             .catch(err => console.log(err))
             .finally(() => {
                 profileAvatarPopup.isLoading(false);
-                profileAvatarPopup.close();
+                
             })
-        profileAvatarPopup.close();
     }
 })
 
@@ -128,12 +128,12 @@ const newCardPopup = new PopupWithForm({
             .then(res => {
                 const card = createCard(res);
                 const cardElement = card.getCard();
-                cardList.addItemOnPage(cardElement, "append");
+                cardList.addItemOnPage(cardElement, "prepend");
+                newCardPopup.close();
             })
             .catch(err => console.log(err))
             .finally(() => {
                 newCardPopup.isLoading(false)
-                newCardPopup.close();
             })
     }
 });
@@ -157,17 +157,17 @@ profileFormButton.addEventListener("click", () => {
     profileNameInput.value = userDataAnswer.name;
     profileDescInput.value = userDataAnswer.about;
 
-    ProfileFormValidation.setInitialState();
+    profileFormValidation.setInitialState();
     profilePopup.open();
     
 });
 
 cardNewFormButton.addEventListener("click", () => {
-    AddCardFormValidation.setInitialState();
+    addCardFormValidation.setInitialState();
     newCardPopup.open();
 });
 
 profileAvatarFormButton.addEventListener("click", () => {
-    ProfileAvatarFormValidation.setInitialState();
+    profileAvatarFormValidation.setInitialState();
     profileAvatarPopup.open();
 })
