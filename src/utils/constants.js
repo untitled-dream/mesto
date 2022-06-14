@@ -10,6 +10,12 @@ export const formObject = {
 export const cardTemplateSelector = "#card-template";
 export const cardsListSelector =".elements__list";
 
+export const userDataObject = {
+    userNameSelector: ".profile__name",
+    userDescSelector: ".profile__description",
+    userAvatarSelector: ".profile__avatar"
+}
+
 export const cardAddPopupElement = document.querySelector("#card-add");
 export const cardViewPopupElement = document.querySelector("#card-view");
 export const profilePopupElement = document.querySelector("#profile-edit");
