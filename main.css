@@ -760,21 +760,26 @@ template {
     margin: 0 auto;
 }
 .popup__caption {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    /*max-width: 291px;*/
+}
+
+/*@media screen and (max-width: 620px) {
+    .popup__caption {
+        max-width: 240px;
+    }    
+}*/
+.popup__caption-text {
     color: white;
     font-size: 12px;
     font-weight: 400;
     line-height: 15px;
-    margin-top: 10px;
-    max-width: 291px;
+    margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-@media screen and (max-width: 620px) {
-    .popup__caption {
-        max-width: 240px;
-    }    
 }
 .popup__image {
     max-width: 75vw;
