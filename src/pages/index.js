@@ -9,6 +9,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import {
     formObject,
+    userDataObject,
     cardTemplateSelector,
     profilePopupElement,
     profileAvatarPopupElement,
@@ -32,11 +33,7 @@ const api = new Api({
     }
 });
 
-const userData = new UserInfo({
-    userNameSelector: ".profile__name",
-    userDescSelector: ".profile__description",
-    userAvatarSelector: ".profile__avatar"
-});
+const userData = new UserInfo(userDataObject);
 
 const imageViewPopup = new PopupWithImage("#card-view");
 
