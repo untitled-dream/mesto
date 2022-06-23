@@ -9,7 +9,6 @@
   <meta name="keywords" content="Яндекс.Практикум, HTML, CSS, Java Script">
   <title>Mesto - Russia</title>
 </head>
-
 <body class="root">
   <header class="header">
     <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" lang="en" alt="Mesto - Russia Logo">
@@ -128,12 +127,17 @@
       <div class="elements__title-wrapper">
         <h2 class="elements__title"></h2>
         <div class="elements__like-container">
-          <button class="elements__like-button" type="button" title="Лайк"></button>
+          <button class="elements__like-button" type="button"></button>
           <span class="elements__like-counter">0</span>
         </div>
       </div>
       <button class="elements__trash-button" type="button" title="Удалить запись"></button>
     </li>
+  </template>
+  <template id="likeTooltip">
+    <div class="tooltip__container">
+      <img class="tooltip__image" src="" alt="" style="height:30px; width: 30px; border-radius: 50%; object-fit: cover; border:2px solid transparent;">
+    </div>
   </template>
 </body>
 </html>

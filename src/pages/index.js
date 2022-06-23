@@ -9,6 +9,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import {
     formObject,
+    userDataObject,
     cardTemplateSelector,
     profilePopupElement,
     profileAvatarPopupElement,
@@ -21,6 +22,9 @@ import {
     cardNewFormButton,
 } from "../utils/constants.js"
 
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+
 let ownerID = null;
 let ownCard = null;
 
@@ -32,11 +36,7 @@ const api = new Api({
     }
 });
 
-const userData = new UserInfo({
-    userNameSelector: ".profile__name",
-    userDescSelector: ".profile__description",
-    userAvatarSelector: ".profile__avatar"
-});
+const userData = new UserInfo(userDataObject);
 
 const imageViewPopup = new PopupWithImage("#card-view");
 
@@ -50,8 +50,8 @@ addCardFormValidation.enableValidation();
 
 function createCard(data) {
     const card = new Card(data, ownerID, cardTemplateSelector, { 
-        handleCardOpenClick: () => imageViewPopup.open(data),
-        handleCardDeleteClick: () => {
+        handleOpenClick: () => imageViewPopup.open(data),
+        handleDeleteClick: () => {
             ownCard = card;
             cardDeletePopup.open(data)
         },
@@ -115,7 +115,6 @@ const profileAvatarPopup = new PopupWithForm({
             .catch(err => console.log(err))
             .finally(() => {
                 profileAvatarPopup.isLoading(false);
-                
             })
     }
 })
