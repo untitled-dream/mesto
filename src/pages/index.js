@@ -10,7 +10,7 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import {
     formObject,
     userDataObject,
-    cardTemplateSelector,
+    templateSelector,
     profilePopupElement,
     profileAvatarPopupElement,
     cardAddPopupElement,
@@ -46,9 +46,9 @@ profileAvatarFormValidation.enableValidation();
 addCardFormValidation.enableValidation();
 
 function createCard(data) {
-    const card = new Card(data, ownerID, cardTemplateSelector, { 
-        handleCardOpenClick: () => imageViewPopup.open(data),
-        handleCardDeleteClick: () => {
+    const card = new Card(data, ownerID, templateSelector, { 
+        handleOpenClick: () => imageViewPopup.open(data),
+        handleDeleteClick: () => {
             ownCard = card;
             cardDeletePopup.open(data)
         },
@@ -112,7 +112,6 @@ const profileAvatarPopup = new PopupWithForm({
             .catch(err => console.log(err))
             .finally(() => {
                 profileAvatarPopup.isLoading(false);
-                
             })
     }
 })

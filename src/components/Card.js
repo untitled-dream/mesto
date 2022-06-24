@@ -1,21 +1,36 @@
+import tippy from 'tippy.js';
+import 'tippy.js/animations/shift-away-subtle.css';
+
 export default class Card {
-    constructor(data, ownerID, cardsTemplateSelector, { handleCardOpenClick, handleCardDeleteClick, setLike, removeLike } ) {
+    constructor(data, ownerID, templateSelector, { handleOpenClick, handleDeleteClick, setLike, removeLike } ) {
         this._data = data;
         this._ownerID = ownerID;
-        this._cardsTemplateSelector = cardsTemplateSelector;
+        this._cardTemplateSelector = templateSelector.card;
+        this._tooltipImageTemlateSelector = templateSelector.tooltipImage
         this._activeLikeSelector = "elements__like-button_active";
-        this._handleCardOpenClick = handleCardOpenClick;
-        this._handleCardDeleteClick = handleCardDeleteClick;
+        this._handleOpenClick = handleOpenClick;
+        this._handleDeleteClick = handleDeleteClick;
         this._setLike = setLike;
         this._removeLike = removeLike;
     }
 
-    _getTemplate() {
-        return document.querySelector(this._cardsTemplateSelector).content.querySelector(".elements__card").cloneNode(true);
+    _getTemplate(param) {
+        switch(param) {
+            case "card":
+                return document.querySelector(this._cardTemplateSelector).content.querySelector(".elements__card").cloneNode(true);
+            case "tooltipImage":
+                return document.querySelector(this._tooltipImageTemlateSelector).content.querySelector(".tooltip__image").cloneNode(true);
+        }
     }
 
     setLikeCount(data) {
         this._likeCounter.textContent = String(data.likes.length);
+        
+        if (this._tooltip) {
+            this._tooltip.destroy();
+        }
+        
+        this._setTooltip(this._likeButton, data.likes);
     }
 
     _like(data) {
@@ -60,7 +75,7 @@ export default class Card {
     }
 
     getCard() {
-        this._element = this._getTemplate();
+        this._element = this._getTemplate("card");
 
         this._image = this._element.querySelector(".elements__image");
         this._title = this._element.querySelector(".elements__title");
@@ -73,22 +88,55 @@ export default class Card {
         this._title.textContent = this._data.name;
 
         this._element.setAttribute("id", `${this._data._id}`);
-
+        
         this._checkIsOwn();
         this._checkLikeState();
-        this.setLikeCount(this._data)
         
         this._setEventListeners();
 
         return this._element;
     }
 
+    _getTooltip(data) {   
+        this._tooltipContainer = document.createElement("div");
+        this._tooltipContainer.classList.add("tooltip")
+
+        data.forEach((likeUser, index) => {
+            this._tooltipImage = this._getTemplate("tooltipImage");
+            
+            this._tooltipImage.src = likeUser.avatar;
+            this._tooltipImage.alt = likeUser.name;
+            this._tooltipImage.title = likeUser.name;
+            this._tooltipImage.style.zIndex = index;
+
+            this._tooltipContainer.appendChild(this._tooltipImage);
+        })
+
+        return this._tooltipContainer
+    }
+
+    _setTooltip(button, data) {
+        if (data.length) {
+            this._tooltip = tippy(button);
+            this._tooltip.setProps({
+                content: () => {
+                    return this._getTooltip(data)
+                },
+                placement: "top",
+                allowHTML: true,
+                interactive: true,
+                delay: 250,
+                animation: "shift-away-subtle"
+            })
+        }
+    }
+
     _setEventListeners = () => {
         this._image.addEventListener("click", () => { 
-            this._handleCardOpenClick();
+            this._handleOpenClick();
         });
         
-        this._deleteCardButton.addEventListener("click", this._handleCardDeleteClick);
+        this._deleteCardButton.addEventListener("click", this._handleDeleteClick);
         
         this._likeButton.addEventListener("click", () => {
             if (this._likeButton.classList.contains(this._activeLikeSelector)) {

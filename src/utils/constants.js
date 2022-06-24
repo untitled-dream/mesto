@@ -6,9 +6,12 @@ export const formObject = {
     inputErrorClass: "form__input_type_error",
     errorClass: "form__input-error_active"
 }
-
-export const cardTemplateSelector = "#card-template";
 export const cardsListSelector =".elements__list";
+
+export const templateSelector = {
+    card: "#card-template",
+    tooltipImage: "#tooltip-image"
+}
 
 export const userDataObject = {
     userNameSelector: ".profile__name",

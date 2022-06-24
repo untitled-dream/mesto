@@ -1,0 +1,9 @@
+@keyframes test {
+    from {
+        gap: 0;
+    }
+
+    to {
+        gap: 20px;
+    }
+}

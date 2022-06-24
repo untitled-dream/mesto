@@ -1,5 +1,7 @@
 .elements__title-wrapper {
     background-color: white;
+    border-bottom-left-radius: var(--card-round);
+    border-bottom-right-radius: var(--card-round);
     display: flex;
     justify-content: space-between;
     align-items: center;
