@@ -93,18 +93,27 @@ export default class Card {
     }
 
     _getTooltipTemplate() {
-        return document.querySelector("#likeTooltip").content.querySelector(".tooltip__container").cloneNode(true);
+        return document.querySelector("#tooltip-container").content.querySelector(".tooltip__container").cloneNode(true);
+    }
+
+    _getTooltipImageTemplate() {
+        return document.querySelector("#tooltip-image").content.querySelector(".tooltip__image").cloneNode(true);
     }
 
     _getTooltip(data) {
         this._tooltipTemplate = this._getTooltipTemplate();
-
-        return data.forEach(likeUser => {
-            this._tooltipImageTemplate = this._tooltipTemplate.querySelector(".tooltip__image");
-            this._tooltipImageTemplate.src = likeUser.avatar;
+        
+        data.forEach(likeUser => {
+            this._tooltipImageTemplate = this._getTooltipImageTemplate();
             
-            return this._tooltipImageTemplate;
+            this._tooltipImageTemplate.src = likeUser.avatar;
+            this._tooltipImageTemplate.alt = likeUser.name;
+            this._tooltipImageTemplate.title = likeUser.name;
+
+            this._tooltipTemplate.appendChild(this._tooltipImageTemplate)
         })
+
+        return this._tooltipTemplate
     }
 
     _setTooltip(button, data) {
@@ -112,12 +121,12 @@ export default class Card {
             this._tooltip = tippy(button);
             this._tooltip.setProps({
                 content: () => {
-                    return this._getTooltip(data);
+                    return this._getTooltip(data)
                 },
                 placement: "top",
                 allowHTML: true,
                 interactive: true,
-                delay: [0, 50000]
+                delay: 250
             })
         }
     }
