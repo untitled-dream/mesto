@@ -374,6 +374,9 @@ template {
 
   
 .root {
+    counter-reset: section;
+    --card-round: 10px;
+
     background-color: #000;
     box-sizing: border-box;
     font-family: 'Inter', Arial, sans-serif;
@@ -385,6 +388,43 @@ template {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
+}
+.tooltip {
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+    padding: 5px;
+    border-radius: 25px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    gap: 0;
+    animation: test .25s ease forwards;
+}
+
+
+.tooltip__image {
+    border-radius: 50%;
+    height: 40px;
+    object-fit: cover;
+    width: 40px;
+    transition: transform .25s;
+}
+
+.tooltip__image:not(:first-child) {
+    margin-top: -15px;
+}
+
+.tooltip__image:hover {
+    transform: translateX(-10px);
+    transition: transform .25s;
+}
+@keyframes test {
+    from {
+        gap: 0;
+    }
+
+    to {
+        gap: 20px;
+    }
 }
 .header {
     border-bottom: 1px solid rgba(84, 84, 84, .7);
@@ -633,7 +673,6 @@ template {
     border-radius: 10px;
     display: grid;
     width: 282px;
-    overflow: hidden;
     position: relative;
 }
 
@@ -644,6 +683,8 @@ template {
 }
 .elements__image {
     cursor: pointer;
+    border-top-left-radius: var(--card-round);
+    border-top-right-radius: var(--card-round);
     height: 282px;
     -o-object-fit: cover;
     object-fit: cover;
@@ -651,6 +692,8 @@ template {
 }
 .elements__title-wrapper {
     background-color: white;
+    border-bottom-left-radius: var(--card-round);
+    border-bottom-right-radius: var(--card-round);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -970,3 +1013,4 @@ template {
     }
 }
 
+.tippy-box[data-animation=shift-away-subtle][data-state=hidden]{opacity:0}.tippy-box[data-animation=shift-away-subtle][data-state=hidden][data-placement^=top]{transform:translateY(5px)}.tippy-box[data-animation=shift-away-subtle][data-state=hidden][data-placement^=bottom]{transform:translateY(-5px)}.tippy-box[data-animation=shift-away-subtle][data-state=hidden][data-placement^=left]{transform:translateX(5px)}.tippy-box[data-animation=shift-away-subtle][data-state=hidden][data-placement^=right]{transform:translateX(-5px)}
