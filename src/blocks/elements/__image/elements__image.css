@@ -1,5 +1,7 @@
 .elements__image {
     cursor: pointer;
+    border-top-left-radius: var(--card-round);
+    border-top-right-radius: var(--card-round);
     height: 282px;
     -o-object-fit: cover;
     object-fit: cover;

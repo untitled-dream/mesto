@@ -1,4 +1,7 @@
 .root {
+    counter-reset: section;
+    --card-round: 10px;
+
     background-color: #000;
     box-sizing: border-box;
     font-family: 'Inter', Arial, sans-serif;

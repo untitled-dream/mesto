@@ -1,0 +1,16 @@
+.tooltip__image {
+    border-radius: 50%;
+    height: 40px;
+    object-fit: cover;
+    width: 40px;
+    transition: transform .25s;
+}
+
+.tooltip__image:not(:first-child) {
+    margin-top: -15px;
+}
+
+.tooltip__image:hover {
+    transform: translateX(-10px);
+    transition: transform .25s;
+}

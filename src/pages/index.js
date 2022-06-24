@@ -10,7 +10,7 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import {
     formObject,
     userDataObject,
-    cardTemplateSelector,
+    templateSelector,
     profilePopupElement,
     profileAvatarPopupElement,
     cardAddPopupElement,
@@ -21,9 +21,6 @@ import {
     profileAvatarFormButton,
     cardNewFormButton,
 } from "../utils/constants.js"
-
-import tippy from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
 
 let ownerID = null;
 let ownCard = null;
@@ -49,7 +46,7 @@ profileAvatarFormValidation.enableValidation();
 addCardFormValidation.enableValidation();
 
 function createCard(data) {
-    const card = new Card(data, ownerID, cardTemplateSelector, { 
+    const card = new Card(data, ownerID, templateSelector, { 
         handleOpenClick: () => imageViewPopup.open(data),
         handleDeleteClick: () => {
             ownCard = card;

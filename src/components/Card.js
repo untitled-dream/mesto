@@ -1,10 +1,12 @@
 import tippy from 'tippy.js';
+import 'tippy.js/animations/shift-away-subtle.css';
 
 export default class Card {
-    constructor(data, ownerID, cardsTemplateSelector, { handleOpenClick, handleDeleteClick, setLike, removeLike } ) {
+    constructor(data, ownerID, templateSelector, { handleOpenClick, handleDeleteClick, setLike, removeLike } ) {
         this._data = data;
         this._ownerID = ownerID;
-        this._templateSelector = cardsTemplateSelector;
+        this._cardTemplateSelector = templateSelector.card;
+        this._tooltipImageTemlateSelector = templateSelector.tooltipImage
         this._activeLikeSelector = "elements__like-button_active";
         this._handleOpenClick = handleOpenClick;
         this._handleDeleteClick = handleDeleteClick;
@@ -12,14 +14,18 @@ export default class Card {
         this._removeLike = removeLike;
     }
 
-    _getTemplate() {
-        return document.querySelector(this._templateSelector).content.querySelector(".elements__card").cloneNode(true);
+    _getTemplate(param) {
+        switch(param) {
+            case "card":
+                return document.querySelector(this._cardTemplateSelector).content.querySelector(".elements__card").cloneNode(true);
+            case "tooltipImage":
+                return document.querySelector(this._tooltipImageTemlateSelector).content.querySelector(".tooltip__image").cloneNode(true);
+        }
     }
 
     setLikeCount(data) {
-
         this._likeCounter.textContent = String(data.likes.length);
-
+        
         if (this._tooltip) {
             this._tooltip.destroy();
         }
@@ -69,7 +75,7 @@ export default class Card {
     }
 
     getCard() {
-        this._element = this._getTemplate();
+        this._element = this._getTemplate("card");
 
         this._image = this._element.querySelector(".elements__image");
         this._title = this._element.querySelector(".elements__title");
@@ -85,35 +91,28 @@ export default class Card {
         
         this._checkIsOwn();
         this._checkLikeState();
-        //this.setLikeCount(this._data)
         
         this._setEventListeners();
 
         return this._element;
     }
 
-    _getTooltipTemplate() {
-        return document.querySelector("#tooltip-container").content.querySelector(".tooltip__container").cloneNode(true);
-    }
+    _getTooltip(data) {   
+        this._tooltipContainer = document.createElement("div");
+        this._tooltipContainer.classList.add("tooltip")
 
-    _getTooltipImageTemplate() {
-        return document.querySelector("#tooltip-image").content.querySelector(".tooltip__image").cloneNode(true);
-    }
-
-    _getTooltip(data) {
-        this._tooltipTemplate = this._getTooltipTemplate();
-        
-        data.forEach(likeUser => {
-            this._tooltipImageTemplate = this._getTooltipImageTemplate();
+        data.forEach((likeUser, index) => {
+            this._tooltipImage = this._getTemplate("tooltipImage");
             
-            this._tooltipImageTemplate.src = likeUser.avatar;
-            this._tooltipImageTemplate.alt = likeUser.name;
-            this._tooltipImageTemplate.title = likeUser.name;
+            this._tooltipImage.src = likeUser.avatar;
+            this._tooltipImage.alt = likeUser.name;
+            this._tooltipImage.title = likeUser.name;
+            this._tooltipImage.style.zIndex = index;
 
-            this._tooltipTemplate.appendChild(this._tooltipImageTemplate)
+            this._tooltipContainer.appendChild(this._tooltipImage);
         })
 
-        return this._tooltipTemplate
+        return this._tooltipContainer
     }
 
     _setTooltip(button, data) {
@@ -126,7 +125,8 @@ export default class Card {
                 placement: "top",
                 allowHTML: true,
                 interactive: true,
-                delay: 250
+                delay: 250,
+                animation: "shift-away-subtle"
             })
         }
     }
@@ -143,7 +143,6 @@ export default class Card {
                 this._dislike(this._data);
             } else {
                 this._like(this._data);
-                
             }
         }); 
     }
