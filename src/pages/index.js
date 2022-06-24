@@ -22,6 +22,9 @@ import {
     cardNewFormButton,
 } from "../utils/constants.js"
 
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+
 let ownerID = null;
 let ownCard = null;
 
@@ -47,8 +50,8 @@ addCardFormValidation.enableValidation();
 
 function createCard(data) {
     const card = new Card(data, ownerID, cardTemplateSelector, { 
-        handleCardOpenClick: () => imageViewPopup.open(data),
-        handleCardDeleteClick: () => {
+        handleOpenClick: () => imageViewPopup.open(data),
+        handleDeleteClick: () => {
             ownCard = card;
             cardDeletePopup.open(data)
         },
@@ -112,7 +115,6 @@ const profileAvatarPopup = new PopupWithForm({
             .catch(err => console.log(err))
             .finally(() => {
                 profileAvatarPopup.isLoading(false);
-                
             })
     }
 })
