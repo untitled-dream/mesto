@@ -100,17 +100,26 @@ export default class Card {
     _getTooltip(data) {   
         this._tooltipContainer = document.createElement("div");
         this._tooltipContainer.classList.add("tooltip")
-
-        data.forEach((likeUser, index) => {
+        
+        for (let i = 0; i < 5; i++) {
             this._tooltipImage = this._getTemplate("tooltipImage");
             
-            this._tooltipImage.src = likeUser.avatar;
-            this._tooltipImage.alt = likeUser.name;
-            this._tooltipImage.title = likeUser.name;
-            this._tooltipImage.style.zIndex = index;
+            if (data[i]) {
+                this._tooltipImage.src = data[i].avatar;
+                this._tooltipImage.alt = data[i].name;
+                this._tooltipImage.title = data[i].name;
+                this._tooltipImage.style.zIndex = i;
 
-            this._tooltipContainer.appendChild(this._tooltipImage);
-        })
+                this._tooltipContainer.appendChild(this._tooltipImage);
+            } 
+        }
+
+        /*if (data.length > 3) {
+            this._tooltipImageMenu = document.createElement("img");
+            this._tooltipImageMenu.src = require("../images/tooltip-more.svg")
+            this._tooltipImageMenu.alt = "../images/tooltip-more.svg";
+            this._tooltipContainer.append(this._tooltipImageMenu);
+        }*/
 
         return this._tooltipContainer
     }
@@ -125,7 +134,7 @@ export default class Card {
                 placement: "top",
                 allowHTML: true,
                 interactive: true,
-                delay: 250,
+                delay: 125,
                 animation: "shift-away-subtle"
             })
         }
