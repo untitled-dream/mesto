@@ -113,7 +113,8 @@ export default class Card {
                 this._tooltipContainer.appendChild(this._tooltipImage);
             } 
         }
-
+        // test
+        
         /*if (data.length > 3) {
             this._tooltipImageMenu = document.createElement("img");
             this._tooltipImageMenu.src = require("../images/tooltip-more.svg")
