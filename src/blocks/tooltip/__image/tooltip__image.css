@@ -7,7 +7,7 @@
 }
 
 .tooltip__image:not(:first-child) {
-    margin-top: -15px;
+    margin-top: -30px;
 }
 
 .tooltip__image:hover {
