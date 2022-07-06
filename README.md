@@ -1,7 +1,7 @@
 # Mesto
 
 ### 
-> Mesto - a typical one-page site created in the process of learning on the web developer of the online education service [Yandex.Practicum](practicum.yandex.ru).
+> Mesto - a typical one-page site created in the process of learning on the web developer of the online education service [Yandex.Practicum](http://practicum.yandex.ru).
 > 
 > [Live demo](https://untitled-dream.github.io/mesto/index.html)
 
