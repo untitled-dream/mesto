@@ -1,4 +1,5 @@
-@keyframes test {
+
+@keyframes tooltip-appearance {
     from {
         gap: 0;
     }

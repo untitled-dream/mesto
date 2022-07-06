@@ -5,7 +5,7 @@
 
 @import url(../blocks/tooltip/tooltip.css);
 @import url(../blocks/tooltip/__image/tooltip__image.css);
-@import url(../blocks/tooltip-appearance/appearance.css);
+@import url(../blocks/tooltip-appearance/tooltip-appearance.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
